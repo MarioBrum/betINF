@@ -1,27 +1,35 @@
 public class Cliente {
     private String nome;
-    private int cpf;
-    private float carteira; //dinheiro/saldo
+    private String cpf;
+    private double carteira; //dinheiro/saldo
     private String usuarioLogin;
     private String senhaLogin;
 
-    public Cliente(String nome, int cpf){
+    public Cliente(String nome, String cpf){
         this.nome = nome;
         this.cpf = cpf;
-        this.carteira = 0;
+        this.carteira = 0.00;
 
     }
     
+    public Cliente(String nome, String cpf,String usuarioLogin,String senhaLogin){
+        this.nome = nome;
+        this.cpf = cpf;
+        this.carteira = 0.00;
+        this.usuarioLogin = usuarioLogin;
+        this.senhaLogin = senhaLogin;
+
+    }
     public void criarLogin(String usuarioLogin, String senhaLogin){
         this.usuarioLogin = usuarioLogin;
         this.senhaLogin = senhaLogin;
     }
 
-    public void addCarteira(float valor){
+    public void addCarteira(double valor){
         this.carteira = this.carteira + valor;
     }
 
-    public void subCarteira(float valor){
+    public void subCarteira(double valor){
         this.carteira = this.carteira - valor;
     }
 
@@ -29,22 +37,19 @@ public class Cliente {
         return nome;
     }
 
-    public int getCpf(){
+    public String getCpf(){
         return cpf;
     }
 
-    public float getCarteira(){
-        return carteira;
+    public String getNomeUsuario(){
+        return usuarioLogin;
     }
 
-    //nesse metodo? provavelmente no model
-    public boolean confirmaLogin(String usuario, String senha){
-        if(usuario.equals(usuarioLogin) && senha.equals(senhaLogin)){
-            return true;
-        }
-        else{
-            return false;
-        }
+    public String getSenhaUsuario(){
+        return senhaLogin;
+    }
 
+    public double getCarteira(){
+        return carteira;
     }
 }

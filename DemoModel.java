@@ -2,16 +2,19 @@ import java.util.ArrayList;
 
 public class DemoModel {
 
-    private ArrayList<Cliente> clientesCadastrados;
+    private static ArrayList<Cliente> clientesCadastrados;
     public DemoModel(){
         clientesCadastrados = new ArrayList<Cliente>();
     }
 
-    public void addCliente(Cliente cliente){
-        clientesCadastrados.add(cliente);
+    //fazer cadastro
+    public boolean addCliente(Cliente cliente){
+        return clientesCadastrados.add(cliente);
     }
 
-    public boolean removeClientePeloCPF(int cpf){
+    //remover cliente
+    //nao usado
+    public boolean removeClientePeloCPF(String cpf){
         for (Cliente cliente : clientesCadastrados) {
             if(cliente.getCpf() == cpf){
                 clientesCadastrados.remove(cliente);
@@ -19,6 +22,27 @@ public class DemoModel {
             }
         }
         return false;
-        
     }
+    
+    //verifica se existe usuario com tal login
+    public Cliente confirmaUsuario(String usuarioNome){
+        for(Cliente cliente : clientesCadastrados){
+            if(cliente.getNomeUsuario().equals(usuarioNome)){
+                return cliente;
+            }
+        }
+        return null;
+    }
+
+    public boolean confirmaLogin(String usuarioNome, String senhaNome) {
+        Cliente usuario = confirmaUsuario(usuarioNome);
+        if(usuario != null){
+            if(usuario.getNome().equals(usuarioNome) && usuario.getSenhaUsuario().equals(senhaNome)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
 }
