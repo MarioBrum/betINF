@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class Administrador {
+    private String nome;
+    private String adminLogin;
+    private String adminSenha;
+    
+    
+    public Administrador(String nome,String adminLogin,String adminSenha){
+        this.nome = nome;
+        this.adminLogin = adminLogin;
+        this.adminSenha = adminSenha;
+
+    }
+    
+    
+    public void criarLoginAdm(String adminLogin, String adminSenha){
+        this.adminLogin = adminLogin;
+        this.adminSenha = adminSenha;
+    }
+    //atualizar o model para lidar com o login de Admin
+    
+    public Cliente definirVencedor(Aposta aposta)
+    {
+        //scanner temporario ---> passar para a view depois
+    	
+    	Cliente clienteA = aposta.getCliente1(); //por algum motivo chamar aposta.getCliente1().getNome(); não funciona
+    	Cliente clienteB = aposta.getCliente2();
+    	Cliente clienteVencedor = new Cliente("","");
+    	System.out.println("Selecionar o vencedor da aposta");
+    	System.out.println(aposta.getNomeDaAposta() + "R$:"+ aposta.getValorDaAposta());
+    	System.out.println("entre os clientes:"+ clienteA.getNomeUsuario()+" X "+clienteB.getNomeUsuario());
+    	
+    	//deve dar pra transformar isso em um botão no javafx
+    	Scanner entrada = new Scanner(System.in);
+
+		if(entrada.nextInt() == 1)
+		{
+    		clienteVencedor = aposta.getCliente1();
+		}
+    	if(entrada.nextInt() == 2)
+    	{
+    		clienteVencedor = aposta.getCliente2();
+    	}
+    	entrada.close();
+    	clienteVencedor.addCarteira(aposta.getValorDaAposta());
+    	//mesmo problema do entrarAposta, esse é mais simples de tratar 
+    	//só comparar o cliente retornado com os clientes da lista e substituir quando encontrar
+    	return clienteVencedor;
+    }
+}

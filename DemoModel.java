@@ -3,10 +3,15 @@ import java.util.ArrayList;
 public class DemoModel {
 
     private static ArrayList<Cliente> clientesCadastrados;
+    private static ArrayList<Aposta> apostasRegistradas;
     public DemoModel(){
         clientesCadastrados = new ArrayList<Cliente>();
     }
-
+    
+    public boolean addAposta(Aposta aposta)
+    {
+    	return apostasRegistradas.add(aposta);
+    }
     //fazer cadastro
     public boolean addCliente(Cliente cliente){
         return clientesCadastrados.add(cliente);
