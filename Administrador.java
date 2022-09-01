@@ -13,18 +13,20 @@ public class Administrador {
 
     }
     
-    
     public void criarLoginAdm(String adminLogin, String adminSenha){
         this.adminLogin = adminLogin;
         this.adminSenha = adminSenha;
     }
-    //atualizar o model para lidar com o login de Admin
     
+    //atualizar o model/view para lidar com o login de Admin
+    
+    /*
     public Cliente definirVencedor(Aposta aposta)
     {
         //scanner temporario ---> passar para a view depois
     	
     	Cliente clienteA = aposta.getCliente1(); //por algum motivo chamar aposta.getCliente1().getNome(); não funciona
+    	//String nome = aposta.getCliente1().getNome();
     	Cliente clienteB = aposta.getCliente2();
     	Cliente clienteVencedor = new Cliente("","");
     	System.out.println("Selecionar o vencedor da aposta");
@@ -48,4 +50,5 @@ public class Administrador {
     	//só comparar o cliente retornado com os clientes da lista e substituir quando encontrar
     	return clienteVencedor;
     }
+    */
 }

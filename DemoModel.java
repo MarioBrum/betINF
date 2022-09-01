@@ -4,6 +4,9 @@ public class DemoModel {
 
     private static ArrayList<Cliente> clientesCadastrados;
     private static ArrayList<Aposta> apostasRegistradas;
+    //criado para ter uma divisao das apostas abertas(onde ninguem aceitou a aposta) e das fechadas(onde tem 2 clientes apostando)
+    private static ArrayList<Aposta> apostasConsolidadas;
+    //private static ArrayList<JogoResultado> resultadoAtualizado;
     public DemoModel(){
         clientesCadastrados = new ArrayList<Cliente>();
     }
