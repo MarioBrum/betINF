@@ -13,7 +13,7 @@ public class DemoController{
 
     public static void main(String [] args){
     	DemoController dc = new DemoController(new DemoModel(), new DemoView());
-		Cliente usuarioLogado = null;
+		Usuario usuarioLogado = null;
     	while(true) {
     		if(!logado) {
     			int opcao = dc.view.showOpcoesLogin();
@@ -24,11 +24,12 @@ public class DemoController{
     				//pega usuario de login
 					String usuario = dc.view.showUsuario();
 					String senha = dc.view.showSenha();
-					logado = dc.model.confirmaLogin(usuario,senha);
+					usuarioLogado = dc.model.confirmaLogin(usuario,senha);
 					//criar um usuario pro metodo confirma login, e dividir dentro do case1 tela de adm e tela de cliente
-					if(logado){
+					if(usuarioLogado != null){
 						//fazer atividades 
 						//usuarioLogado = usuario;
+						logado = !logado;
 						break;
 					}
 					else{
@@ -42,7 +43,13 @@ public class DemoController{
     				//logado = dc.model.addCliente(dc.view.showCadastro());
     				
     				usuarioLogado = dc.view.showCadastroCliente();
-    				dc.model.addCliente(usuarioLogado);
+    				if(usuarioLogado.getClass().getName().equals("Cliente")) {
+    					dc.model.addCliente((Cliente) usuarioLogado);
+    				}
+    				else {
+    					dc.view.showErroLogin();
+    				}
+    				//dc.model.addCliente(usuarioLogado);
 					logado = !logado;
     				
     				break;
@@ -53,20 +60,42 @@ public class DemoController{
     		}
 			//caso usuario esteja logado, mostrar opcoes
 			else{
-				int opcao = dc.view.mostrarOpcoesLogado(usuarioLogado);
-				//sempre sai do programa
-				switch(opcao){
-					case 1:
-						break;
-					case 2:
-						break;
-					case 0:
-						logado = !logado;
-						break;
-					default:
-						logado = !logado;
-						dc.view.mostrarErroOpcoes();
-						break;
+				//se cliente
+				if(usuarioLogado.getClass().getName().equals("Cliente")) {
+					int opcao = dc.view.mostrarOpcoesLogadoCliente((Cliente) usuarioLogado);
+					//sempre sai do programa
+					switch(opcao){
+						case 1:
+							break;
+						case 2:
+							break;
+						case 0:
+							logado = !logado;
+							break;
+						default:
+							logado = !logado;
+							dc.view.mostrarErroOpcoes();
+							break;
+					}
+				}
+				//se admin
+				else {
+					int opcao = dc.view.mostrarOpcoesLogadoADMIN((Admin) usuarioLogado);
+					//sempre sai do programa
+					switch(opcao){
+						case 1:
+							break;
+						case 2:
+							break;
+						case 0:
+							logado = !logado;
+							break;
+						default:
+							logado = !logado;
+							dc.view.mostrarErroOpcoes();
+							break;
+					}
+					
 				}
 			}
     	}

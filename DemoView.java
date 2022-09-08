@@ -41,7 +41,7 @@ public class DemoView {
 		return new Cliente(nome,usuario,senha,cpf);
 	}
 
-    protected Administrador showCadastroADMIN() {
+    protected Admin showCadastroADMIN() {
         limpaConsole();
 		System.out.println("Digite o nome: ");
 		String nome = entrada.next();
@@ -51,7 +51,7 @@ public class DemoView {
         limpaConsole();
 		System.out.println("Digite a senha para login: ");
 		String senha = entrada.next();
-		return new Administrador(nome,usuario,senha);
+		return new Admin(nome,usuario,senha);
 	}
 
     //vai retornar o usuario do login
@@ -77,13 +77,24 @@ public class DemoView {
 
     //apenas saldo funcionando
     //lista de ofertas direcionada a outra aba
-    protected int mostrarOpcoesLogado(Cliente cliente) {
+    protected int mostrarOpcoesLogadoCliente(Cliente cliente) {
         limpaConsole();
-        System.out.println("Ola  " + cliente.getNomeUsuario() + "\n"
+        System.out.println("Ola  " + cliente.getNomeUsuario() + "!\n"
                          + "Seu saldo atual eh: " + cliente.getCarteira() + "\n"
                         + "1. Digite 1 para criar oferta: \n" 
 						+ "2. Digite 2 para solicitar resgate(saldo): \n"
                         + "3. Digite 3 para ver lista de ofertas(apostas): \n"
+						+ "0. Sair");
+		//int entradaTeclado = entrada.nextInt();
+		return entrada.nextInt();
+    }
+    
+    protected int mostrarOpcoesLogadoADMIN(Admin admin) {
+        limpaConsole();
+        System.out.println("Ola  " + admin.getNomeUsuario() + "!\n"
+                        + "1. Informar um placar: \n" 
+						+ "2. Ver lista de apostas abertas: \n"
+                        + "3. Ver lista de apostas fechadas: \n"
 						+ "0. Sair");
 		//int entradaTeclado = entrada.nextInt();
 		return entrada.nextInt();
