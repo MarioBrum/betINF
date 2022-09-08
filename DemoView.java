@@ -38,7 +38,7 @@ public class DemoView {
         limpaConsole();
 		System.out.println("Digite a senha para login: ");
 		String senha = entrada.next();
-		return new Cliente(nome,cpf,usuario,senha);
+		return new Cliente(nome,usuario,senha,cpf);
 	}
 
     protected Administrador showCadastroADMIN() {
@@ -72,7 +72,7 @@ public class DemoView {
 
     protected void showErroLogin() {
         limpaConsole();
-        System.out.println("Ocorreu algum erro no login, verifique as informações ou faça seu cadastro! ");
+        System.out.println("Ocorreu algum erro no login, verifique as informacoes ou faca seu cadastro! ");
     }
 
     //apenas saldo funcionando
@@ -80,7 +80,7 @@ public class DemoView {
     protected int mostrarOpcoesLogado(Cliente cliente) {
         limpaConsole();
         System.out.println("Ola  " + cliente.getNomeUsuario() + "\n"
-                         + "Seu saldo atual é: " + cliente.getCarteira() + "\n"
+                         + "Seu saldo atual eh: " + cliente.getCarteira() + "\n"
                         + "1. Digite 1 para criar oferta: \n" 
 						+ "2. Digite 2 para solicitar resgate(saldo): \n"
                         + "3. Digite 3 para ver lista de ofertas(apostas): \n"

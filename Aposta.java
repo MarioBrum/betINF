@@ -28,7 +28,8 @@ public class Aposta {
 		this.nomeDaAposta = nomeDaAposta;
 		//deixar cliente2 nulo, pois ninguem aceita a aposto ao cria-la
 		//criando cliente "nulo"
-		this.cliente2 = new Cliente("vazio","0");
+		//this.cliente2 = new Cliente("vazio","vazio","vazio");
+		this.cliente2 = null;
 		
 		/* usar essa verificacao no model e no view, se imprime na tela eh do view
 		if(cliente1.getCarteira() < valorDaAposta)
@@ -86,6 +87,15 @@ public class Aposta {
 	*/
 	
 	public void EntrarAposta(Cliente clienteEntraAposta) {
+		if(this.cliente2 != null){
+			//chama uma interrupcao do view
+			//fazer essa condicao e TODAS AS CONDICOES sobre interrupcoes e erros no controller, sendo visualizadas no view
+		}
+		else {
+			this.cliente2 = clienteEntraAposta;
+		}
+	
+		/*
 		if(this.cliente2.getNome().equals("vazio")) {
 			this.cliente2 = clienteEntraAposta;
 			//fazer uma transferencia de local dessa aposta da lista de apostas abertas para as apostas fechadas
@@ -94,8 +104,10 @@ public class Aposta {
 			//chama uma interrupcao do view
 			//fazer essa condicao e TODAS AS CONDICOES sobre interrupcoes e erros no controller, sendo vizualidas no view
 		}
+		*/
 		
 	}
+	
 	
 	public int getValorDaAposta() {
 		return valorDaAposta;

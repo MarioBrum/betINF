@@ -25,6 +25,7 @@ public class DemoController{
 					String usuario = dc.view.showUsuario();
 					String senha = dc.view.showSenha();
 					logado = dc.model.confirmaLogin(usuario,senha);
+					//criar um usuario pro metodo confirma login, e dividir dentro do case1 tela de adm e tela de cliente
 					if(logado){
 						//fazer atividades 
 						//usuarioLogado = usuario;

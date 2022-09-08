@@ -1,30 +1,21 @@
-public class Cliente {
-    private String nome;
+public class Cliente extends Usuario{
     private String cpf;
     private double carteira; //dinheiro/saldo
-    private String usuarioLogin;
-    private String senhaLogin;
 
-    //criar uma classe usuario e implements cliente a adm, com nome,usuario, senha
-    public Cliente(String nome, String cpf){
-        this.nome = nome;
+    public Cliente(String nome,String usuarioLogin,String senhaLogin, String cpf){
+    	super(nome,usuarioLogin,senhaLogin);
         this.cpf = cpf;
         this.carteira = 0.00;
 
     }
     
-    public Cliente(String nome, String cpf,String usuarioLogin,String senhaLogin){
-        this.nome = nome;
-        this.cpf = cpf;
-        this.carteira = 0.00;
-        this.usuarioLogin = usuarioLogin;
-        this.senhaLogin = senhaLogin;
-
+    /*
+    //metodo construtor vazio, apenas para nao ter comparacao de null
+    //provavelmente nao usado, testar se codigo aposta funciona com null
+    public Cliente(String nome, String usuarioLogin, String senhaLogin) {
+    	super(nome,usuarioLogin,senhaLogin);
     }
-    public void criarLogin(String usuarioLogin, String senhaLogin){
-        this.usuarioLogin = usuarioLogin;
-        this.senhaLogin = senhaLogin;
-    }
+    */
 
     public void addCarteira(double valor){
         this.carteira = this.carteira + valor;
@@ -34,20 +25,8 @@ public class Cliente {
         this.carteira = this.carteira - valor;
     }
 
-    public String getNome(){
-        return nome;
-    }
-
     public String getCpf(){
         return cpf;
-    }
-
-    public String getNomeUsuario(){
-        return usuarioLogin;
-    }
-
-    public String getSenhaUsuario(){
-        return senhaLogin;
     }
 
     public double getCarteira(){

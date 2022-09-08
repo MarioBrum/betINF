@@ -3,19 +3,22 @@ import java.util.ArrayList;
 public class DemoModel {
 
     private static ArrayList<Cliente> clientesCadastrados;
+    private static ArrayList<Administrador> administradoresCadastrados;
     private static ArrayList<Aposta> apostasRegistradas;
     //criado para ter uma divisao das apostas abertas(onde ninguem aceitou a aposta) e das fechadas(onde tem 2 clientes apostando)
     private static ArrayList<Aposta> apostasConsolidadas;
     //private static ArrayList<JogoResultado> resultadoAtualizado;
     public DemoModel(){
-        clientesCadastrados = new ArrayList<Cliente>();
+    	clientesCadastrados = new ArrayList<Cliente>();
+    	administradoresCadastrados = new ArrayList<Administrador>();
+    	administradoresCadastrados.add(new Administrador ("admin","admin","admin"));
     }
     
     public boolean addAposta(Aposta aposta)
     {
     	return apostasRegistradas.add(aposta);
     }
-    //fazer cadastro
+    //fazer cadastro cliente
     public boolean addCliente(Cliente cliente){
         return clientesCadastrados.add(cliente);
     }
@@ -33,17 +36,22 @@ public class DemoModel {
     }
     
     //verifica se existe usuario com tal login
-    public Cliente confirmaUsuario(String usuarioNome){
+    public Usuario confirmaUsuario(String usuarioNome){
         for(Cliente cliente : clientesCadastrados){
             if(cliente.getNomeUsuario().equals(usuarioNome)){
                 return cliente;
+            }
+        }
+        for(Administrador adm : administradoresCadastrados){
+            if(adm.getNomeUsuario().equals(usuarioNome)){
+                return adm;
             }
         }
         return null;
     }
 
     public boolean confirmaLogin(String usuarioNome, String senhaNome) {
-        Cliente usuario = confirmaUsuario(usuarioNome);
+        Usuario usuario = confirmaUsuario(usuarioNome);
         if(usuario != null){
             if(usuario.getNome().equals(usuarioNome) && usuario.getSenhaUsuario().equals(senhaNome)){
                 return true;
@@ -52,5 +60,8 @@ public class DemoModel {
         return false;
     }
     
+    public boolean carregaBaseDeClientes() {
+    	return false;
+    }
     
 }

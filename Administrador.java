@@ -1,16 +1,9 @@
 //import java.util.Scanner;
 
-public class Administrador {
-    private String nome;
-    private String adminLogin;
-    private String adminSenha;
-    
-    
+public class Administrador extends Usuario{
+        
     public Administrador(String nome,String adminLogin,String adminSenha){
-        this.nome = nome;
-        this.adminLogin = adminLogin;
-        this.adminSenha = adminSenha;
-
+        super(nome,adminLogin,adminSenha);
     }
     
 	/* 
