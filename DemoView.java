@@ -25,7 +25,7 @@ public class DemoView {
     String senha = entrada.next();
 	*/
 	
-	protected Cliente showCadastro() {
+	protected Cliente showCadastroCliente() {
         limpaConsole();
 		System.out.println("Digite o nome: ");
 		String nome = entrada.next();
@@ -39,6 +39,19 @@ public class DemoView {
 		System.out.println("Digite a senha para login: ");
 		String senha = entrada.next();
 		return new Cliente(nome,cpf,usuario,senha);
+	}
+
+    protected Administrador showCadastroADMIN() {
+        limpaConsole();
+		System.out.println("Digite o nome: ");
+		String nome = entrada.next();
+        limpaConsole();
+		System.out.println("Digite o usuario para login: ");
+		String usuario = entrada.next();
+        limpaConsole();
+		System.out.println("Digite a senha para login: ");
+		String senha = entrada.next();
+		return new Administrador(nome,usuario,senha);
 	}
 
     //vai retornar o usuario do login

@@ -5,6 +5,7 @@ public class Cliente {
     private String usuarioLogin;
     private String senhaLogin;
 
+    //criar uma classe usuario e implements cliente a adm, com nome,usuario, senha
     public Cliente(String nome, String cpf){
         this.nome = nome;
         this.cpf = cpf;

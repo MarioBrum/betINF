@@ -1,4 +1,4 @@
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class Administrador {
     private String nome;
@@ -13,11 +13,14 @@ public class Administrador {
 
     }
     
+	/* 
     public void criarLoginAdm(String adminLogin, String adminSenha){
         this.adminLogin = adminLogin;
         this.adminSenha = adminSenha;
     }
-    
+    */
+
+	
     //atualizar o model/view para lidar com o login de Admin
     
     /*
@@ -25,7 +28,7 @@ public class Administrador {
     {
         //scanner temporario ---> passar para a view depois
     	
-    	Cliente clienteA = aposta.getCliente1(); //por algum motivo chamar aposta.getCliente1().getNome(); não funciona
+    	Cliente clienteA = aposta.getCliente1(); //por algum motivo chamar aposta.getCliente1().getNome(); nï¿½o funciona
     	//String nome = aposta.getCliente1().getNome();
     	Cliente clienteB = aposta.getCliente2();
     	Cliente clienteVencedor = new Cliente("","");
@@ -33,7 +36,7 @@ public class Administrador {
     	System.out.println(aposta.getNomeDaAposta() + "R$:"+ aposta.getValorDaAposta());
     	System.out.println("entre os clientes:"+ clienteA.getNomeUsuario()+" X "+clienteB.getNomeUsuario());
     	
-    	//deve dar pra transformar isso em um botão no javafx
+    	//deve dar pra transformar isso em um botï¿½o no javafx
     	Scanner entrada = new Scanner(System.in);
 
 		if(entrada.nextInt() == 1)
@@ -46,8 +49,8 @@ public class Administrador {
     	}
     	entrada.close();
     	clienteVencedor.addCarteira(aposta.getValorDaAposta());
-    	//mesmo problema do entrarAposta, esse é mais simples de tratar 
-    	//só comparar o cliente retornado com os clientes da lista e substituir quando encontrar
+    	//mesmo problema do entrarAposta, esse ï¿½ mais simples de tratar 
+    	//sï¿½ comparar o cliente retornado com os clientes da lista e substituir quando encontrar
     	return clienteVencedor;
     }
     */

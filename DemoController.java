@@ -40,7 +40,7 @@ public class DemoController{
     			case 2:
     				//logado = dc.model.addCliente(dc.view.showCadastro());
     				
-    				usuarioLogado = dc.view.showCadastro();
+    				usuarioLogado = dc.view.showCadastroCliente();
     				dc.model.addCliente(usuarioLogado);
 					logado = !logado;
     				
