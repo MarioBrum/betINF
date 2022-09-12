@@ -5,6 +5,11 @@ public class Aposta {
 	private Cliente cliente1;
 	private Cliente cliente2;
 	private String nomeDaAposta;
+
+	//refazer essa aposta, onde uma aposta simples possui apenas cliente/valor/nome e 
+	//uma aposta concluida possui cliente/valor/nome e outro cliente
+
+
 	//modificar nome da aposta para ter os times ou numero de gols como strings separadas?
 	//eh o que eu tava pensando,  a principio a ideia eh pegar essa classe aposta e mistificar em apostas diferentes
 	//aposta por vencedor, aposta por vencedor/empate, aposta por perdedor, aposta por perdedor/empate, aposta por empate
@@ -151,5 +156,11 @@ public class Aposta {
 	}
 	
 		*/
+
+	public String toString(){
+		return "Aposta: " + this.nomeDaAposta + "\n"
+				+ "Valor: " + "R$ " + this.valorDaAposta + "\n"
+				+ "Aposta de : " + this.cliente1.getNomeUsuario();
+	}
 	
 }

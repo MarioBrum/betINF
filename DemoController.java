@@ -43,6 +43,7 @@ public class DemoController{
     				//logado = dc.model.addCliente(dc.view.showCadastro());
     				
     				usuarioLogado = dc.view.showCadastroCliente();
+					 //verificar se já nao existe um usuario com o mesmo nomeDeLogin ** nao feito
     				if(usuarioLogado.getClass().getName().equals("Cliente")) {
     					dc.model.addCliente((Cliente) usuarioLogado);
     				}
@@ -62,45 +63,52 @@ public class DemoController{
 			else{
 				//se cliente
 				if(usuarioLogado.getClass().getName().equals("Cliente")) {
-					int opcao = dc.view.mostrarOpcoesLogadoCliente((Cliente) usuarioLogado);
-					//sempre sai do programa
-					switch(opcao){
-						case 1:
-							break;
-						case 2:
-							break;
-						case 0:
-							logado = !logado;
-							break;
-						default:
-							logado = !logado;
-							dc.view.mostrarErroOpcoes();
-							break;
-					}
+					opcoesLogadoCliente(((Cliente) usuarioLogado), dc);
 				}
 				//se admin
 				else {
-					int opcao = dc.view.mostrarOpcoesLogadoADMIN((Admin) usuarioLogado);
-					//sempre sai do programa
-					switch(opcao){
-						case 1:
-							break;
-						case 2:
-							break;
-						case 0:
-							logado = !logado;
-							break;
-						default:
-							logado = !logado;
-							dc.view.mostrarErroOpcoes();
-							break;
-					}
-					
+					opcoesLogadoADMIN(((Admin) usuarioLogado), dc);
 				}
 			}
     	}
     	
     }
+
+	public static void opcoesLogadoADMIN(Admin adminLogado,DemoController dc){
+		int opcao = dc.view.mostrarOpcoesLogadoADMIN(adminLogado);
+					//sempre sai do programa
+					switch(opcao){
+						case 1:
+							break;
+						case 2:
+							break;
+						case 0:
+							logado = !logado;
+							break;
+						default:
+							logado = !logado;
+							dc.view.mostrarErroOpcoes();
+							break;
+					}
+	}
+
+	public static void opcoesLogadoCliente(Cliente clienteLogado, DemoController dc){
+		int opcao = dc.view.mostrarOpcoesLogadoCliente(clienteLogado);
+					//sempre sai do programa
+					switch(opcao){
+						case 1:
+							break;
+						case 2:
+							break;
+						case 0:
+							logado = !logado;
+							break;
+						default:
+							logado = !logado;
+							dc.view.mostrarErroOpcoes();
+							break;
+					}
+	}
 
 
 }
