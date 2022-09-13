@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 public class DemoModel {
 
+    //private static DemoView dv;
     private static ArrayList<Cliente> clientesCadastrados;
     private static ArrayList<Admin> administradoresCadastrados;
-    private static ArrayList<Aposta> apostasRegistradas;
-    //criado para ter uma divisao das apostas abertas(onde ninguem aceitou a aposta) e das fechadas(onde tem 2 clientes apostando)
-    private static ArrayList<Aposta> apostasConsolidadas;
+    private static ArrayList<Aposta> apostasAbertas;
+    private static ArrayList<ApostaCompleta> apostasConfirmadas;
     //private static ArrayList<JogoResultado> resultadoAtualizado;
     public DemoModel(){
     	clientesCadastrados = new ArrayList<Cliente>();
@@ -15,9 +15,16 @@ public class DemoModel {
     	clientesCadastrados.add(new Cliente ("Mario","mario1","senha1","10101010101"));
     }
     
+    //adiciona uma aposta composta/completa(com cliente2/fechada)
+    public boolean addAposta(ApostaCompleta aposta)
+    {
+    	return apostasConfirmadas.add(aposta);
+    }
+
+    //adiciona uma aposta simples(sem cliente2/aberta)
     public boolean addAposta(Aposta aposta)
     {
-    	return apostasRegistradas.add(aposta);
+    	return apostasAbertas.add(aposta);
     }
     //fazer cadastro cliente
     public boolean addCliente(Cliente cliente){
@@ -60,7 +67,19 @@ public class DemoModel {
         }
         return null;
     }
+
+    //retorna uma ApostaCompleta caso cliente tenha saldo, ou null caso ocorra algum erro/nao tenha saldo
+    public ApostaCompleta entrarAposta(Aposta aposta, Cliente cliente){
+        if(cliente.getCarteira() >= aposta.getValorDaAposta()){
+            return new ApostaCompleta(aposta, cliente);
+        }
+        else{
+            //lancar excessao na tela
+            return null;
+        }
+    }
     
+
     public boolean carregaBaseDeClientes() {
     	return false;
     }

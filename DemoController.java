@@ -97,8 +97,16 @@ public class DemoController{
 					//sempre sai do programa
 					switch(opcao){
 						case 1:
+						//criar aposta
 							break;
 						case 2:
+						//fazer retirada
+							break;
+						case 3:
+						//fazer deposito
+							break;
+						case 4:
+						//listar apostas
 							break;
 						case 0:
 							logado = !logado;

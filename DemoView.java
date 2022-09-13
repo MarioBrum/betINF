@@ -82,8 +82,9 @@ public class DemoView {
         System.out.println("Ola  " + cliente.getNomeUsuario() + "!\n"
                          + "Seu saldo atual eh: " + cliente.getCarteira() + "\n"
                         + "1. Digite 1 para criar oferta: \n" 
-						+ "2. Digite 2 para solicitar resgate(saldo): \n"
-                        + "3. Digite 3 para ver lista de ofertas(apostas): \n"
+						+ "2. Digite 2 para solicitar retirada(saldo): \n"
+                        + "3. Digite 3 para criar um deposito(saldo): \n"
+                        + "4. Digite 4 para ver lista de ofertas(apostas): \n"
 						+ "0. Sair");
 		//int entradaTeclado = entrada.nextInt();
 		return entrada.nextInt();
