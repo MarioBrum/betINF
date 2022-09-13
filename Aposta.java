@@ -165,8 +165,8 @@ public class Aposta {
 		*/
 
 	public String toString(){
-                
-		return "-----------------------------------------------------------------"
+               
+		return "-----------------------------------------------------------------\n"
 				+"Aposta: " + this.nomeDaAposta + "\n"
 				+ "Valor: " + "R$ " + this.valorDaAposta + "\n"
 				+ "Aposta de : " + this.cliente1.getNomeUsuario() + "\n"

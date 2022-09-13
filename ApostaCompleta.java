@@ -12,7 +12,7 @@ public class ApostaCompleta extends Aposta{
     }
     
     public String toString(){
-		return "-----------------------------------------------------------------"
+		return "-----------------------------------------------------------------\n"
                 + "Aposta: " + this.getNomeDaAposta() + "\n"
 				+ "Valor: " + "R$ " + this.getValorDaAposta() + "\n"
 				+ "Aposta de : " + this.getCliente1().getNomeUsuario() + "\n"

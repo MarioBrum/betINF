@@ -16,17 +16,19 @@ public class DemoModel {
     }
     
     //adiciona uma aposta composta/completa(com cliente2/fechada)
-    public boolean addAposta(ApostaCompleta aposta)
+    public void addAposta(ApostaCompleta aposta)
     {
-    	return apostasConfirmadas.add(aposta);
+    	apostasConfirmadas.add(aposta);
     }
 
     //arrumas isso, valor da aposta verificacao e erro de view/controller/model
     //**************** importanteeee
     //adiciona uma aposta simples(sem cliente2/aberta)
-    public boolean addAposta(Aposta aposta)
+    public static void addAposta(Aposta aposta)
     {
-    	return apostasAbertas.add(aposta);
+    	System.out.println(aposta.toString());
+    	apostasAbertas.add(aposta);
+    	//arrumar ******************************
     }
     //fazer cadastro cliente
     public boolean addCliente(Cliente cliente){
