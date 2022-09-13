@@ -98,15 +98,28 @@ public class DemoController{
 					switch(opcao){
 						case 1:
 						//criar aposta
+							//Aposta aposta = new Aposta(dc.view.showOpcoesCriaAposta(clienteLogado));
+							//dc.model.addAposta(aposta);
+							dc.model.addAposta(dc.view.showOpcoesCriaAposta(clienteLogado));
 							break;
 						case 2:
 						//fazer retirada
+							double valorRet = dc.view.showRetiradaCliente(clienteLogado);
+							if(valorRet > clienteLogado.getCarteira()) {
+								dc.view.mostraErroRetirada();
+							}
+							else {
+								clienteLogado.subCarteira(valorRet);
+							}
 							break;
 						case 3:
 						//fazer deposito
+							double valorDep = dc.view.showDepositoCliente(clienteLogado);
+							clienteLogado.addCarteira(valorDep);
 							break;
 						case 4:
 						//listar apostas
+							dc.view.showApostasAbertas();
 							break;
 						case 0:
 							logado = !logado;

@@ -1,7 +1,7 @@
 
 public class Aposta {
 	
-	private int valorDaAposta;
+	private double valorDaAposta;
 	private Cliente cliente1;
 	//private Cliente cliente2;
 	private String nomeDaAposta;
@@ -27,7 +27,7 @@ public class Aposta {
 	//precisa de um construtor ja que o metodo criar aposta cria uma aposta?
 	//o metodo cria aposta eh um metodo do model que vai criar uma instancia aposta, precisa sim de construtor
 	
-	public Aposta(String nomeDaAposta,int valorDaAposta, Cliente cliente1) {
+	public Aposta(String nomeDaAposta,double valorDaAposta, Cliente cliente1) {
 		this.valorDaAposta = valorDaAposta;
 		this.cliente1 = cliente1;
 		this.nomeDaAposta = nomeDaAposta;
@@ -118,7 +118,7 @@ public class Aposta {
 	
 	
 	
-	public int getValorDaAposta() {
+	public double getValorDaAposta() {
 		return valorDaAposta;
 	}
 	//sem metodo set, depois da aposta criada nao mudasse o valor

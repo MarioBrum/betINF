@@ -1,6 +1,8 @@
+import java.text.DecimalFormat;
 import java.util.Scanner;
 public class DemoView {
     private static Scanner entrada;
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     public DemoView(){
         entrada = new Scanner(System.in);
         
@@ -80,7 +82,7 @@ public class DemoView {
     protected int mostrarOpcoesLogadoCliente(Cliente cliente) {
         limpaConsole();
         System.out.println("Ola  " + cliente.getNomeUsuario() + "!\n"
-                         + "Seu saldo atual eh: " + cliente.getCarteira() + "\n"
+                         + "Seu saldo atual eh: " + df.format(cliente.getCarteira()) + "\n"
                         + "1. Digite 1 para criar oferta: \n" 
 						+ "2. Digite 2 para solicitar retirada(saldo): \n"
                         + "3. Digite 3 para criar um deposito(saldo): \n"
@@ -110,4 +112,45 @@ public class DemoView {
         limpaConsole();
         System.out.println("Ocorreu algum erro na escolha de opcoes, reproduza a acao novamente! ");
     }
+    
+    public Aposta showOpcoesCriaAposta(Cliente clienteLogado) {
+    	limpaConsole();
+        System.out.println("Informe o nome da aposta(ex.: Brasil 2 x 0 Servia Jogo1): \n");
+        String nome = entrada.next();
+        
+        System.out.println("Informe o valor da aposta(ex.: 2.80): \n");
+        double valor = entrada.nextDouble();
+                        
+		//int entradaTeclado = entrada.nextInt();
+        return new Aposta(nome,valor,clienteLogado);
+    }
+    
+    public double showDepositoCliente(Cliente clienteLogado) {
+    	limpaConsole();
+        System.out.println("Informe o valor do deposito(ex.: 2,80): \n");
+        return entrada.nextDouble();
+
+    }
+    
+    public double showRetiradaCliente(Cliente clienteLogado) {
+    	limpaConsole();
+        System.out.println("Informe o valor de retirada(ex.: 2,80): \n");
+        return entrada.nextDouble();
+
+    }
+
+	public void mostraErroRetirada() {
+		System.out.println("Ocorreu um erro durante a retirada, valor invalido, verifique seu saldo e repita o processo!"
+							+ "\n O seu saldo nao foi alterado!");
+		
+	}
+
+	public void showApostasAbertas() {
+		limpaConsole();
+        System.out.println("Lista de Apostas: \n");
+        
+		
+	}
+	
+	
 }

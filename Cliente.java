@@ -32,4 +32,11 @@ public class Cliente extends Usuario{
     public double getCarteira(){
         return carteira;
     }
+    
+    public String toString() {
+    	return "Nome do cliente: " + this.getNome() + "\n"
+    			+ "Nome de usuario: " + this.getNomeUsuario() + "\n"
+    			+ "CPF: " + this.cpf + "\n"
+    			+ "Saldo: " + this.getCarteira();
+    }
 }

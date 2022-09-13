@@ -21,6 +21,8 @@ public class DemoModel {
     	return apostasConfirmadas.add(aposta);
     }
 
+    //arrumas isso, valor da aposta verificacao e erro de view/controller/model
+    //**************** importanteeee
     //adiciona uma aposta simples(sem cliente2/aberta)
     public boolean addAposta(Aposta aposta)
     {
@@ -30,6 +32,12 @@ public class DemoModel {
     public boolean addCliente(Cliente cliente){
         return clientesCadastrados.add(cliente);
     }
+    
+    /*
+    public boolean depositoCliente(Cliente cliente,double valor) {
+    	
+    }
+    */
 
     //remover cliente
     //nao usado
