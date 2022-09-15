@@ -82,6 +82,15 @@ public class DemoController{
 							break;
 						case 2:
 							break;
+						case 3:
+							break;
+						case 4:
+							break;
+						case 5:
+							//teste para imprimir clientes
+							String clientesCadastrados = dc.model.listaDeClientes();
+							dc.view.showClientesCadastrados(clientesCadastrados);
+							break;
 						case 0:
 							logado = !logado;
 							break;
@@ -92,15 +101,17 @@ public class DemoController{
 					}
 	}
 
+	//implementar metodo pra trocar senha cliente ***
 	public static void opcoesLogadoCliente(Cliente clienteLogado, DemoController dc){
 		int opcao = dc.view.mostrarOpcoesLogadoCliente(clienteLogado);
 					//sempre sai do programa
 					switch(opcao){
 						case 1:
 						//criar aposta
-							Aposta aposta =dc.view.showOpcoesCriaAposta(clienteLogado);
+							Aposta aposta = dc.view.showOpcoesCriaAposta(clienteLogado);
 							//System.out.println(aposta.toString());
 							dc.model.addAposta(aposta);
+							clienteLogado.subCarteira(aposta.getValorDaAposta());
 							//dc.model.addAposta(dc.view.showOpcoesCriaAposta(clienteLogado));
 							break;
 						case 2:
@@ -120,7 +131,10 @@ public class DemoController{
 							break;
 						case 4:
 						//listar apostas
-							dc.view.showApostasAbertas();
+							//dc.view.showApostasAbertas();
+							//dc.view.showUmaLista(dc.model.listaDeApostasAbertas());
+							String listaImpressa = dc.model.listaDeApostasAbertas();
+							dc.view.showApostasAbertas(listaImpressa);
 							break;
 						case 0:
 							logado = !logado;

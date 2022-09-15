@@ -47,4 +47,10 @@ public class Admin extends Usuario{
     	return clienteVencedor;
     }
     */
+    public String toString() {
+    	return "-----------------------------------------------------------------\n"
+    			+ "Nome do admin: " + this.getNome() + "\n"
+    			+ "Nome de usuario: " + this.getNomeUsuario() + "\n"
+    			+ "-----------------------------------------------------------------";
+    }
 }

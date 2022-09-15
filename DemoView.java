@@ -79,6 +79,7 @@ public class DemoView {
 
     //apenas saldo funcionando
     //lista de ofertas direcionada a outra aba
+    //implementar metodo pra trocar senha cliente
     protected int mostrarOpcoesLogadoCliente(Cliente cliente) {
         limpaConsole();
         System.out.println("Ola  " + cliente.getNomeUsuario() + "!\n"
@@ -98,6 +99,8 @@ public class DemoView {
                         + "1. Informar um placar: \n" 
 						+ "2. Ver lista de apostas abertas: \n"
                         + "3. Ver lista de apostas fechadas: \n"
+                        + "4. Ver lista de apostas fechadas: \n"
+                        + "5. Ver lista de clientes cadastrados: \n"
 						+ "0. Sair");
 		//int entradaTeclado = entrada.nextInt();
 		return entrada.nextInt();
@@ -115,10 +118,13 @@ public class DemoView {
     
     public Aposta showOpcoesCriaAposta(Cliente clienteLogado) {
     	limpaConsole();
-        System.out.println("Informe o nome da aposta(ex.: Brasil 2 x 0 Servia Jogo1): \n");
-        String nome = entrada.next();
-        
-        System.out.println("Informe o valor da aposta(ex.: 2.80): \n");
+    	//Scanner s = new Scanner(System.in);
+    	//comando pra limpar cache da variavel entrada
+    	entrada.nextLine();
+        System.out.println("Informe o nome da aposta(ex.: Brasil 2 x 0 Servia Jogo1): ");
+        String nome = entrada.nextLine();
+        //System.out.flush();
+        System.out.println("Informe o valor da aposta(ex.: 2,80): \n");
         double valor = entrada.nextDouble();
                         
 		//int entradaTeclado = entrada.nextInt();
@@ -145,12 +151,26 @@ public class DemoView {
 		
 	}
 
+	/*
 	public void showApostasAbertas() {
 		limpaConsole();
         System.out.println("Lista de Apostas: \n");
+
+	}
+	*/
+	
+	public void showApostasAbertas(String lista) {
+		limpaConsole();
+        System.out.println("Lista de Apostas abertas: \n");
+        System.out.println(lista);
         
-		
 	}
 	
+	public void showClientesCadastrados(String lista) {
+		limpaConsole();
+        System.out.println("Lista de Clientes cadastrados: \n");
+        System.out.println(lista);
+        
+	}
 	
 }

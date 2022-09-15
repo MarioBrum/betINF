@@ -11,6 +11,8 @@ public class DemoModel {
     public DemoModel(){
     	clientesCadastrados = new ArrayList<Cliente>();
     	administradoresCadastrados = new ArrayList<Admin>();
+    	apostasAbertas = new ArrayList<Aposta>();
+    	apostasConfirmadas = new ArrayList<ApostaCompleta>();
     	administradoresCadastrados.add(new Admin ("admin","admin","admin"));
     	clientesCadastrados.add(new Cliente ("Mario","mario1","senha1","10101010101"));
     }
@@ -18,16 +20,17 @@ public class DemoModel {
     //adiciona uma aposta composta/completa(com cliente2/fechada)
     public void addAposta(ApostaCompleta aposta)
     {
-    	apostasConfirmadas.add(aposta);
+    	DemoModel.apostasConfirmadas.add(aposta);
     }
 
     //arrumas isso, valor da aposta verificacao e erro de view/controller/model
     //**************** importanteeee
     //adiciona uma aposta simples(sem cliente2/aberta)
-    public static void addAposta(Aposta aposta)
+    public void addAposta(Aposta aposta)
     {
-    	System.out.println(aposta.toString());
-    	apostasAbertas.add(aposta);
+    	//System.out.println(aposta.toString());
+    	//System.out.println(aposta.getClass());
+    	DemoModel.apostasAbertas.add(aposta);
     	//arrumar ******************************
     }
     //fazer cadastro cliente
@@ -89,6 +92,21 @@ public class DemoModel {
         }
     }
     
+    public String listaDeApostasAbertas() {
+    	String retorno = "";
+    	for(Aposta a : apostasAbertas ){
+    		retorno += a.toString();
+    	}
+    	return retorno;
+    }
+    
+    public String listaDeClientes() {
+    	String retorno = "";
+    	for(Cliente a : clientesCadastrados ){
+    		retorno += a.toString();
+    	}
+    	return retorno;
+    }
 
     public boolean carregaBaseDeClientes() {
     	return false;
