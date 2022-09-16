@@ -2,12 +2,22 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 public class DemoView {
     private static Scanner entrada;
+    private static DemoView instancia;
     private static final DecimalFormat df = new DecimalFormat("0.00");
-    public DemoView(){
+    private DemoView(){
         entrada = new Scanner(System.in);
         
     }
-    
+
+    public static DemoView getInstancia() {
+        if (instancia == null ) {
+
+            instancia = new DemoView();
+
+        }
+
+        return instancia;
+    }
     //mostra tela de login
     //retorna true caso v� para janela de login
 	public int showOpcoesLogin() {
@@ -81,25 +91,26 @@ public class DemoView {
     //lista de ofertas direcionada a outra aba
     //implementar metodo pra trocar senha cliente
     protected int mostrarOpcoesLogadoCliente(Cliente cliente) {
-        limpaConsole();
+        //limpaConsole();
         System.out.println("Ola  " + cliente.getNomeUsuario() + "!\n"
                          + "Seu saldo atual eh: " + df.format(cliente.getCarteira()) + "\n"
                         + "1. Digite 1 para criar oferta: \n" 
 						+ "2. Digite 2 para solicitar retirada(saldo): \n"
                         + "3. Digite 3 para criar um deposito(saldo): \n"
                         + "4. Digite 4 para ver lista de ofertas(apostas): \n"
+                        + "5. Digite 5 para aceitar uma aposta da lista de ofertas(apostas): \n"
 						+ "0. Sair");
 		//int entradaTeclado = entrada.nextInt();
 		return entrada.nextInt();
     }
     
     protected int mostrarOpcoesLogadoADMIN(Admin admin) {
-        limpaConsole();
+        //limpaConsole();
         System.out.println("Ola  " + admin.getNomeUsuario() + "!\n"
                         + "1. Informar um placar: \n" 
 						+ "2. Ver lista de apostas abertas: \n"
                         + "3. Ver lista de apostas fechadas: \n"
-                        + "4. Ver lista de apostas fechadas: \n"
+                        + "4. Trocar senha: \n"
                         + "5. Ver lista de clientes cadastrados: \n"
 						+ "0. Sair");
 		//int entradaTeclado = entrada.nextInt();
@@ -172,5 +183,19 @@ public class DemoView {
         System.out.println(lista);
         
 	}
+
+    public String showDigitaSenhaNova() {
+        limpaConsole();
+        System.out.println("Digite a senha nova: \n");
+        String senhaNova = entrada.next();
+        return senhaNova;
+    }
+
+    public void showApostasFechadas(String lista) {
+        limpaConsole();
+        System.out.println("Lista de Apostas fechadas/confirmadas: \n");
+        System.out.println(lista);
+    }
+
 	
 }

@@ -2,17 +2,29 @@ public class DemoController{
 
     private DemoView view;
     private DemoModel model;
+	private static DemoController instancia;
     private static boolean logado;
 
 
-    public DemoController(DemoModel model, DemoView view){
+    private DemoController(DemoModel model, DemoView view){
         this.model = model;
         this.view = view;
+    }
+
+	public static DemoController getInstance() {
+
+        if (instancia == null ) {
+
+            instancia = new DemoController(DemoModel.getInstancia(),DemoView.getInstancia());
+
+        }
+
+        return instancia;
 
     }
 
     public static void main(String [] args){
-    	DemoController dc = new DemoController(new DemoModel(), new DemoView());
+    	DemoController dc = new DemoController(DemoModel.getInstancia(), DemoView.getInstancia());
 		Usuario usuarioLogado = null;
     	while(true) {
     		if(!logado) {
@@ -79,15 +91,25 @@ public class DemoController{
 					//sempre sai do programa
 					switch(opcao){
 						case 1:
+						//informar um placar
 							break;
 						case 2:
+						//listar apostas abertas
+							String listaImpressa = dc.model.listaDeApostasAbertas();
+							dc.view.showApostasAbertas(listaImpressa);
 							break;
 						case 3:
+						//listar apostar fechadas
+							listaImpressa = dc.model.listaDeApostasFechadas();
+							dc.view.showApostasFechadas(listaImpressa);
 							break;
 						case 4:
+						//trocar senha
+							String novaSenhaAdm = dc.view.showDigitaSenhaNova();
+							adminLogado.setSenhaLogin(novaSenhaAdm);
 							break;
 						case 5:
-							//teste para imprimir clientes
+						//teste para imprimir clientes
 							String clientesCadastrados = dc.model.listaDeClientes();
 							dc.view.showClientesCadastrados(clientesCadastrados);
 							break;
@@ -136,6 +158,12 @@ public class DemoController{
 							String listaImpressa = dc.model.listaDeApostasAbertas();
 							dc.view.showApostasAbertas(listaImpressa);
 							break;
+						case 5:
+						//aceitar aposta
+						//ver se a aposta nao possui o proprio cliente
+						//ver se o saldo eh valido
+						//aceitar a aposta simples e transforma-la em completa/fazendo exclusoes nas listas do model
+						break;
 						case 0:
 							logado = !logado;
 							break;

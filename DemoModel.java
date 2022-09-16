@@ -1,20 +1,36 @@
 import java.util.ArrayList;
 
+//aplicado singleton
 public class DemoModel {
 
     //private static DemoView dv;
+    private static DemoModel instancia;
     private static ArrayList<Cliente> clientesCadastrados;
     private static ArrayList<Admin> administradoresCadastrados;
     private static ArrayList<Aposta> apostasAbertas;
     private static ArrayList<ApostaCompleta> apostasConfirmadas;
     //private static ArrayList<JogoResultado> resultadoAtualizado;
-    public DemoModel(){
+    private DemoModel(){
+
     	clientesCadastrados = new ArrayList<Cliente>();
     	administradoresCadastrados = new ArrayList<Admin>();
     	apostasAbertas = new ArrayList<Aposta>();
     	apostasConfirmadas = new ArrayList<ApostaCompleta>();
-    	administradoresCadastrados.add(new Admin ("admin","admin","admin"));
+        administradoresCadastrados.add(new Admin ("admin","admin","admin"));
+
+        //instanciando coisas pra testes
     	clientesCadastrados.add(new Cliente ("Mario","mario1","senha1","10101010101"));
+        clientesCadastrados.add(new Cliente ("Marcelo","marcelo1","senha1","10101010102"));
+        clientesCadastrados.add(new Cliente ("Adilson","adilson1","senha1","10101010103"));
+        apostasAbertas.add(new Aposta("Brasil 2 x 0 Servia", 5, clientesCadastrados.get(2)));
+    }
+
+    //padrao singleton
+    public static DemoModel getInstancia(){
+        if(instancia == null){
+            instancia = new DemoModel();
+        }
+        return instancia;
     }
     
     //adiciona uma aposta composta/completa(com cliente2/fechada)
@@ -94,7 +110,9 @@ public class DemoModel {
     
     public String listaDeApostasAbertas() {
     	String retorno = "";
+        int contador = 0;
     	for(Aposta a : apostasAbertas ){
+            retorno += "\n "+ contador++ + "\n";
     		retorno += a.toString();
     	}
     	return retorno;
@@ -102,7 +120,9 @@ public class DemoModel {
     
     public String listaDeClientes() {
     	String retorno = "";
+        int contador = 0;
     	for(Cliente a : clientesCadastrados ){
+            retorno += "\n" + contador++ + "\n";
     		retorno += a.toString();
     	}
     	return retorno;
@@ -110,6 +130,16 @@ public class DemoModel {
 
     public boolean carregaBaseDeClientes() {
     	return false;
+    }
+
+    public String listaDeApostasFechadas() {
+        String retorno = "";
+        int contador = 0;
+    	for(Aposta a : apostasConfirmadas ){
+            retorno += "\n "+ contador++ + "\n";
+    		retorno += a.toString();
+    	}
+    	return retorno;
     }
     
 }

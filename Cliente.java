@@ -38,7 +38,7 @@ public class Cliente extends Usuario{
     			+ "Nome do cliente: " + this.getNome() + "\n"
     			+ "Nome de usuario: " + this.getNomeUsuario() + "\n"
     			+ "CPF: " + this.cpf + "\n"
-    			+ "Saldo: " + this.getCarteira()
+    			+ "Saldo: " + this.getCarteira() + "\n"
     			+ "-----------------------------------------------------------------";
     }
 }
