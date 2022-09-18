@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class DemoController{
 
     private DemoView view;
@@ -96,7 +98,7 @@ public class DemoController{
 						case 2:
 						//listar apostas abertas
 							String listaImpressa = dc.model.listaDeApostasAbertas();
-							dc.view.showApostasAbertas(listaImpressa);
+							DemoView.showApostasAbertas(listaImpressa);
 							break;
 						case 3:
 						//listar apostar fechadas
@@ -132,9 +134,16 @@ public class DemoController{
 						//criar aposta
 							Aposta aposta = dc.view.showOpcoesCriaAposta(clienteLogado);
 							//System.out.println(aposta.toString());
-							dc.model.addAposta(aposta);
-							clienteLogado.subCarteira(aposta.getValorDaAposta());
-							//dc.model.addAposta(dc.view.showOpcoesCriaAposta(clienteLogado));
+							//if de valor carteira < valor aposta/saldo insuficiente
+							if(clienteLogado.getCarteira() < aposta.getValorDaAposta()){
+								dc.view.showSaldoInsuficiente();
+							}
+							else{
+								dc.model.addAposta(aposta);
+								clienteLogado.subCarteira(aposta.getValorDaAposta());
+								//dc.model.addAposta(dc.view.showOpcoesCriaAposta(clienteLogado));
+							}
+
 							break;
 						case 2:
 						//fazer retirada
@@ -156,14 +165,34 @@ public class DemoController{
 							//dc.view.showApostasAbertas();
 							//dc.view.showUmaLista(dc.model.listaDeApostasAbertas());
 							String listaImpressa = dc.model.listaDeApostasAbertas();
-							dc.view.showApostasAbertas(listaImpressa);
+							DemoView.showApostasAbertas(listaImpressa);
 							break;
 						case 5:
 						//aceitar aposta
 						//ver se a aposta nao possui o proprio cliente
 						//ver se o saldo eh valido
 						//aceitar a aposta simples e transforma-la em completa/fazendo exclusoes nas listas do model
-						break;
+						
+						ArrayList<Aposta> listaDeApostasAbertas = dc.model.getApostasAbertas();
+						int apostaEscolhidaInt = dc.view.showOpcoesApostas(dc.model.listaDeApostasAbertas());
+						if(apostaEscolhidaInt > listaDeApostasAbertas.size()){
+							dc.view.showErroApostaEscolhida();
+						}
+						else{
+							Aposta apostaEscolhida = listaDeApostasAbertas.get(apostaEscolhidaInt);
+							if(clienteLogado.getNomeUsuario() != apostaEscolhida.getCliente1().getNomeUsuario() 
+							&& clienteLogado.getCarteira() < apostaEscolhida.getValorDaAposta()){
+								dc.view.showErroClienteValor();
+							}
+							//caso tudo ok
+							else{
+								ApostaCompleta apostaCompletaADD = new ApostaCompleta(apostaEscolhida, clienteLogado);
+								clienteLogado.subCarteira(apostaEscolhida.getValorDaAposta());
+								dc.model.removeAposta(apostaEscolhida);
+								dc.model.addAposta(apostaCompletaADD);
+							}
+						}
+							break;
 						case 0:
 							logado = !logado;
 							break;

@@ -49,6 +49,19 @@ public class DemoModel {
     	DemoModel.apostasAbertas.add(aposta);
     	//arrumar ******************************
     }
+
+    //remove uma aposta abertas
+    public void removeAposta(Aposta aposta)
+    {
+    	DemoModel.apostasAbertas.remove(aposta);
+    }
+
+    //remove uma aposta abertas
+    public void removeAposta(ApostaCompleta aposta)
+    {
+    	DemoModel.apostasConfirmadas.remove(aposta);
+    }
+
     //fazer cadastro cliente
     public boolean addCliente(Cliente cliente){
         return clientesCadastrados.add(cliente);
@@ -108,6 +121,9 @@ public class DemoModel {
         }
     }
     
+    public ArrayList<Aposta> getApostasAbertas(){
+        return apostasAbertas;
+    }
     public String listaDeApostasAbertas() {
     	String retorno = "";
         int contador = 0;

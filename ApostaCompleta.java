@@ -16,7 +16,7 @@ public class ApostaCompleta extends Aposta{
                 + "Aposta: " + this.getNomeDaAposta() + "\n"
 				+ "Valor: " + "R$ " + this.getValorDaAposta() + "\n"
 				+ "Aposta de : " + this.getCliente1().getNomeUsuario() + "\n"
-                + "Aceita por: " + this.cliente2 + "\n"
+                + "Aceita por: " + this.cliente2.getNomeUsuario()  + "\n"
                 + "-----------------------------------------------------------------";
 	}
 	

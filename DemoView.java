@@ -170,7 +170,7 @@ public class DemoView {
 	}
 	*/
 	
-	public void showApostasAbertas(String lista) {
+	public static void showApostasAbertas(String lista) {
 		limpaConsole();
         System.out.println("Lista de Apostas abertas: \n");
         System.out.println(lista);
@@ -195,6 +195,25 @@ public class DemoView {
         limpaConsole();
         System.out.println("Lista de Apostas fechadas/confirmadas: \n");
         System.out.println(lista);
+    }
+
+    public void showSaldoInsuficiente() {
+        System.out.println("Saldo insuficiente! \n");
+    }
+
+    public int showOpcoesApostas(String lista) {
+        showApostasAbertas(lista);
+        System.out.println("Digite o numero da aposta escolhida: ");
+        return entrada.nextInt();
+    }
+
+    public void showErroApostaEscolhida() {
+        System.out.println("Erro! Aposta escolhida não existe! \n");
+    }
+
+    public void showErroClienteValor() {
+        System.out.println("Erro! Cliente não pode ser o mesmo e/ou Valor da carteira insuficiente! \n");
+
     }
 
 	
