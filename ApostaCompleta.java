@@ -10,6 +10,10 @@ public class ApostaCompleta extends Aposta{
         super(aposta.getNomeDaAposta(),aposta.getValorDaAposta(), aposta.getCliente1());
         this.cliente2 = cliente2;
     }
+    public Cliente getCliente2(){
+       return cliente2;
+    }
+    
     
     public String toString(){
 		return "-----------------------------------------------------------------\n"

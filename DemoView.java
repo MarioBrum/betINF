@@ -216,5 +216,11 @@ public class DemoView {
 
     }
 
+    //retorna true se o ganhador foi o cliente que cirou a aposta
+    public boolean showOpcoesGanhadorCriou() {
+        System.out.println("Digite 1 se o ganhador foi quem criou a aposta, ou 0 se foi quem aceitou: \n");
+        return entrada.nextInt() == 1;
+    }
+
 	
 }

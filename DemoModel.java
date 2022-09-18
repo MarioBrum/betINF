@@ -157,5 +157,9 @@ public class DemoModel {
     	}
     	return retorno;
     }
+
+    public ArrayList<ApostaCompleta> getApostasFechadas() {
+        return apostasConfirmadas;
+    }
     
 }

@@ -94,6 +94,29 @@ public class DemoController{
 					switch(opcao){
 						case 1:
 						//informar um placar
+						//String listaImpressa = dc.model.listaDeApostasFechadas();
+						//dc.view.showApostasFechadas(listaImpressa);
+						//int opcaoApostaEscolhida = dc.view.showOpcoesApostas(listaImpressa);
+
+						ArrayList<ApostaCompleta> listaDeApostasFechadas = dc.model.getApostasFechadas();
+						int apostaEscolhidaInt = dc.view.showOpcoesApostas(dc.model.listaDeApostasFechadas());
+						if(apostaEscolhidaInt > listaDeApostasFechadas.size()){
+							dc.view.showErroApostaEscolhida();
+						}
+						else{
+							ApostaCompleta apostaEscolhida = listaDeApostasFechadas.get(apostaEscolhidaInt);
+							//retorna true se o ganhador foi o cliente que cirou a aposta
+							boolean ganhadorCriador = dc.view.showOpcoesGanhadorCriou();
+							if(ganhadorCriador){
+								apostaEscolhida.getCliente1().addCarteira(apostaEscolhida.getValorDaAposta());
+							}
+							else{
+								apostaEscolhida.getCliente2().addCarteira(apostaEscolhida.getValorDaAposta());
+							}
+							//remove a aposta já resolvida
+							dc.model.removeAposta(apostaEscolhida);
+						}
+
 							break;
 						case 2:
 						//listar apostas abertas
