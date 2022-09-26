@@ -1,5 +1,6 @@
 import java.text.DecimalFormat;
 import java.util.Scanner;
+
 public class DemoView {
     private static Scanner entrada;
     private static DemoView instancia;
@@ -221,6 +222,7 @@ public class DemoView {
         System.out.println("Digite 1 se o ganhador foi quem criou a aposta, ou 0 se foi quem aceitou: \n");
         return entrada.nextInt() == 1;
     }
-
 	
 }
+
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="betINF" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CadastroClienteFX">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="351.0" prefWidth="582.0">
+         <children>
+            <Pane layoutX="259.0" layoutY="1.0" prefHeight="363.0" prefWidth="336.0">
+               <children>
+                  <ImageView fitHeight="338.0" fitWidth="334.0" layoutY="21.0">
+                     <image>
+                        <Image url="@logobetINF.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Label layoutX="24.0" layoutY="34.0" text="Nome:" />
+            <Label layoutX="24.0" layoutY="69.0" text="CPF:" />
+            <Label layoutX="24.0" layoutY="108.0" text="Usuario:" />
+            <Label layoutX="28.0" layoutY="149.0" text="Senha:" />
+            <PasswordField fx:id="senhaClienteEntrada" layoutX="75.0" layoutY="145.0" />
+            <TextField fx:id="usuarioClienteEntrada" layoutX="75.0" layoutY="104.0" />
+            <TextField fx:id="cpfClienteEntrada" layoutX="75.0" layoutY="65.0" />
+            <TextField fx:id="nomeClienteEntrada" layoutX="75.0" layoutY="30.0" />
+            <Button layoutX="172.0" layoutY="187.0" mnemonicParsing="false" onAction="#criaUmCliente" text="OK" />
+         </children></AnchorPane>
+  </content>
+</TitledPane>
