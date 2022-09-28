@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane>
+         <children>
+            <TitledPane animated="false" prefHeight="400.0" prefWidth="600.0" text="betINF">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane layoutX="314.0" prefHeight="363.0" prefWidth="277.0">
+                           <children>
+                              <ImageView fitHeight="132.0" fitWidth="119.0" layoutX="158.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../git/eclip/betINF/logobetINF.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id da Aposta:" />
+                        <TextField fx:id="entradaIdAposta" layoutX="14.0" layoutY="31.0" promptText="Id da Aposta" />
+                        <Button layoutX="14.0" layoutY="64.0" mnemonicParsing="false" onAction="#selecionarAposta" text="Selecionar Aposta" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                        <Button layoutX="125.0" layoutY="238.0" mnemonicParsing="false" onAction="#participanteGanhou" text="Participante ganhou" />
+                        <Button layoutX="14.0" layoutY="238.0" mnemonicParsing="false" onAction="#criadorGanhou" text="Criador ganhou" />
+                        <TextArea fx:id="descricaoAposta" layoutX="13.0" layoutY="95.0" prefHeight="136.0" prefWidth="310.0" promptText="Descrição Aposta" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </TitledPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

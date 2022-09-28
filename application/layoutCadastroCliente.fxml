@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="betINF" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CadastroClienteFX">
+<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="betINF" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="351.0" prefWidth="582.0">
          <children>
@@ -31,7 +31,7 @@
             <TextField fx:id="usuarioClienteEntrada" layoutX="75.0" layoutY="104.0" />
             <TextField fx:id="cpfClienteEntrada" layoutX="75.0" layoutY="65.0" />
             <TextField fx:id="nomeClienteEntrada" layoutX="75.0" layoutY="30.0" />
-            <Button layoutX="172.0" layoutY="187.0" mnemonicParsing="false" onAction="#criaUmCliente" text="OK" />
+            <Button fx:id="botaoOK" layoutX="172.0" layoutY="187.0" mnemonicParsing="false" onAction="#criaUmCliente" text="OK" />
          </children></AnchorPane>
   </content>
 </TitledPane>

@@ -31,14 +31,11 @@ public class CadastroClienteFX {
                             + senhaClienteEntrada);
     }
 
-    public void start(Stage secondaryStage) throws Exception {
+    public Scene start() throws Exception {
         FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("layoutCadastroClientefxml"));
         Parent root = fxmlloader.load();
         Scene tela = new Scene(root);
-
-        secondaryStage.setTitle("betINF");
-        secondaryStage.setScene(tela);
-        secondaryStage.show();
+        return tela;
     }
 
 }

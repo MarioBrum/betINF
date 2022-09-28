@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TitledPane animated="false" prefHeight="400.0" prefWidth="600.0" text="betINF">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Pane layoutX="259.0" layoutY="1.0" prefHeight="363.0" prefWidth="336.0">
+                     <children>
+                        <ImageView fitHeight="68.0" fitWidth="71.0" layoutX="266.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../git/eclip/betINF/logobetINF.png" />
+                           </image>
+                        </ImageView>
+                        <Button layoutX="268.0" layoutY="324.0" mnemonicParsing="false" onAction="#logoutADM" text="Logout" />
+                     </children>
+                  </Pane>
+                  <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Olá," />
+                  <Text fill="RED" layoutX="35.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOME DO ADMINISTRADOR">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="35.0" layoutY="325.0" mnemonicParsing="false" onAction="#informarPlacar" text="Informar placar">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <TabPane layoutX="12.0" layoutY="34.0" prefHeight="282.0" prefWidth="513.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab onSelectionChanged="#getOpenBetsList" text="Apostas Abertas">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="194.0" prefWidth="373.0">
+                                 <children>
+                                    <TableView prefHeight="255.0" prefWidth="514.0">
+                                      <columns>
+                                          <TableColumn fx:id="listaIDsAbertas" prefWidth="34.0" text="ID" />
+                                        <TableColumn fx:id="listaApostasAbertas" prefWidth="290.0" text="Apostas" />
+                                        <TableColumn fx:id="listaValorAbertas" prefWidth="60.0" text="Valor" />
+                                          <TableColumn fx:id="listaCriadorAbertas" prefWidth="129.0" text="Criador" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab onSelectionChanged="#getClosedBetsList" text="Apostas Fechadas">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView prefHeight="255.0" prefWidth="513.0">
+                                       <columns>
+                                          <TableColumn fx:id="listaIDsFechadas" prefWidth="24.0" text="ID" />
+                                          <TableColumn fx:id="listaApostasFechadas" prefWidth="236.0" text="Aposta" />
+                                          <TableColumn fx:id="listaValorFechadas" prefWidth="79.0" text="Valor" />
+                                          <TableColumn fx:id="listaCriadorFechadas" prefWidth="74.0" text="Criador" />
+                                          <TableColumn fx:id="listaParticipanteFechadas" prefWidth="98.0" text="Participante" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab onSelectionChanged="#getClientList" text="Lista de Clientes">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView prefHeight="255.0" prefWidth="513.0">
+                                       <columns>
+                                          <TableColumn fx:id="listaNomes" prefWidth="277.0" text="Nome" />
+                                          <TableColumn fx:id="listaUsuarios" prefWidth="148.0" text="Usuario" />
+                                          <TableColumn fx:id="listaCPF" prefWidth="87.0" text="CPF" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+                  <Button layoutX="156.0" layoutY="325.0" mnemonicParsing="false" onAction="#trocarSenha" text="Trocar senha">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+   </children>
+</AnchorPane>

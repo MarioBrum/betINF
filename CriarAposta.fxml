@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane>
+         <children>
+            <AnchorPane>
+               <children>
+                  <TitledPane animated="false" prefHeight="400.0" prefWidth="600.0" text="betINF">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Pane layoutX="314.0" prefHeight="363.0" prefWidth="277.0">
+                                 <children>
+                                    <ImageView fitHeight="132.0" fitWidth="119.0" layoutX="166.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../git/eclip/betINF/logobetINF.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <TextField fx:id="entradaTime1" layoutX="11.0" layoutY="29.0" prefHeight="25.0" prefWidth="115.0" promptText="Time 1" />
+                              <TextField fx:id="entradaTime2" layoutX="148.0" layoutY="29.0" prefHeight="25.0" prefWidth="115.0" promptText="Time 2" />
+                              <Text layoutX="134.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                              <Text layoutX="14.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome do time 1" />
+                              <Text layoutX="148.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome do time 2" />
+                              <Button layoutX="11.0" layoutY="224.0" mnemonicParsing="false" onAction="#criarAposta" text="Criar Aposta" />
+                              <Text layoutX="11.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor da aposta" />
+                              <TextField fx:id="entradaValorDaAposta" layoutX="11.0" layoutY="193.0" promptText="Valor da aposta" />
+                              <TextArea fx:id="descricaoAposta" layoutX="11.0" layoutY="78.0" prefHeight="95.0" prefWidth="298.0" />
+                              <Text layoutX="11.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição da Aposta" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </TitledPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
