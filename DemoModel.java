@@ -66,6 +66,21 @@ public class DemoModel {
     public boolean addCliente(Cliente cliente){
         return clientesCadastrados.add(cliente);
     }
+
+    //verifica se nao possui um cliente com mesmo username
+    public boolean usuarioValido(String usuario){
+        boolean resultado = true;
+        for(Cliente c:clientesCadastrados){
+            //System.out.println(c.getNomeUsuario());
+            //System.out.println(usuario);
+            if(c.getNomeUsuario().equals(usuario)){
+                //System.out.println(false);
+                
+                return false;
+            }
+        }
+        return resultado;  
+    }
     
     /*
     public boolean depositoCliente(Cliente cliente,double valor) {

@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SceneController">
    <children>
       <TitledPane animated="false" prefHeight="400.0" prefWidth="600.0" text="betINF">
          <content>
@@ -17,12 +17,12 @@
                <children>
                   <Pane layoutX="259.0" layoutY="1.0" prefHeight="363.0" prefWidth="336.0">
                      <children>
-                        <ImageView fitHeight="142.0" fitWidth="180.0" layoutX="157.0" pickOnBounds="true" preserveRatio="true">
+                        <Button layoutX="268.0" layoutY="324.0" mnemonicParsing="false" onAction="#userLogout" text="Logout" />
+                        <ImageView fitHeight="185.0" fitWidth="332.0" layoutX="2.0" layoutY="83.0">
                            <image>
-                              <Image url="@../../../git/eclip/betINF/logobetINF.png" />
+                              <Image url="@logobetINF.png" />
                            </image>
                         </ImageView>
-                        <Button layoutX="268.0" layoutY="324.0" mnemonicParsing="false" onAction="#userLogout" text="Logout" />
                      </children>
                   </Pane>
                   <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Olá," />

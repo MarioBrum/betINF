@@ -1,23 +1,27 @@
 import java.util.ArrayList;
 
+//import application.SceneController;
+
 public class DemoController{
 
     private DemoView view;
     private DemoModel model;
+	private SceneController sc; //sceneController
 	private static DemoController instancia;
     private static boolean logado;
 
 
-    private DemoController(DemoModel model, DemoView view){
+    private DemoController(DemoModel model, DemoView view, SceneController sc){
         this.model = model;
         this.view = view;
+		this.sc = sc;
     }
 
 	public static DemoController getInstance() {
 
         if (instancia == null ) {
 
-            instancia = new DemoController(DemoModel.getInstancia(),DemoView.getInstancia());
+            instancia = new DemoController(DemoModel.getInstancia(),DemoView.getInstancia(),SceneController.getInstancia());
 
         }
 
@@ -26,7 +30,7 @@ public class DemoController{
     }
 
     public static void main(String [] args){
-    	DemoController dc = new DemoController(DemoModel.getInstancia(), DemoView.getInstancia());
+    	DemoController dc = new DemoController(DemoModel.getInstancia(), DemoView.getInstancia(),SceneController.getInstancia());
 		Usuario usuarioLogado = null;
     	while(true) {
     		if(!logado) {
