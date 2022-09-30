@@ -26,17 +26,7 @@
                      </children>
                   </Pane>
                   <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Olá," />
-                  <Text fx:id="nomeUsuario" fill="RED" layoutX="35.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOME DO USUARIO">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
                   <Text layoutX="13.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Saldo:" />
-                  <Text fx:id="saldoUsuario" layoutX="45.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R$ SALDO DO USUARIO">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Text>
                   <Button layoutX="13.0" layoutY="105.0" mnemonicParsing="false" onAction="#criarNovaAposta" text="Criar nova aposta">
                      <font>
                         <Font name="System Bold" size="12.0" />
@@ -57,6 +47,16 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
+                  <Text fx:id="nomeUsuario" fill="RED" layoutX="35.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOME DO USUARIO">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="saldoUsuario" layoutX="50.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R$ SALDO DO USUARIO">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
          </content>

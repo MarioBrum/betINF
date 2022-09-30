@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
@@ -42,6 +43,12 @@ public class SceneController extends Application {
   private PasswordField entradaLoginSenha;
   @FXML
   private TextField entradaLoginUsuario;
+  @FXML
+  private Text nomeUsuario;
+
+  @FXML
+  private Text saldoUsuario; 
+
 
   public static SceneController getInstancia() {
     if (instancia == null ) {
@@ -157,8 +164,36 @@ public class SceneController extends Application {
     Usuario user = DemoModel.getInstancia().confirmaUsuario(entradaLoginUsuario.getText());
     if(user != null){
       //troca cena menu principal
-      root = FXMLLoader.load(getClass().getResource("MenuPrincipal.fxml"));
-      trocaCena(event);
+      Usuario usuarioLogado = DemoModel.getInstancia().confirmaLogin(entradaLoginUsuario.getText(), entradaLoginSenha.getText());
+      if(usuarioLogado != null){
+        //se for cliente
+        if(usuarioLogado.getClass().getName().equals("Cliente")) {
+					root = FXMLLoader.load(getClass().getResource("MenuPrincipal.fxml"));
+          Cliente clienteLogado = (Cliente)usuarioLogado;
+          //System.out.println(clienteLogado.toString());
+          //System.out.println(clienteLogado.getNomeUsuario());
+          //System.out.println(clienteLogado.getCarteira());
+          //System.out.println(nomeUsuario);
+          this.nomeUsuario = new Text(clienteLogado.getNomeUsuario()); 
+          System.out.println(nomeUsuario);
+          this.saldoUsuario = new Text(Double.toString(clienteLogado.getCarteira()));
+          System.out.println(saldoUsuario);
+          trocaCena(event);
+				}
+				//se admin
+				else {
+					//
+				}
+      
+      }
+      else{
+        /*senha errada 
+        Alert a = new Alert(AlertType.WARNING);
+        a.setTitle("ATENÇÃO");
+        a.setHeaderText("Senha errada!");
+        a.showAndWait();
+        */
+      }
     }
     else{
       Alert a = new Alert(AlertType.WARNING);
@@ -168,13 +203,6 @@ public class SceneController extends Application {
     }
 
   }
-
-  @FXML
-  private Text nomeUsuario;
-
-  @FXML
-  private Text saldoUsuario;
-
   @FXML
   void adicionarSaldo(ActionEvent event) {
 
