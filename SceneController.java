@@ -13,6 +13,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.text.Text;
@@ -22,33 +24,9 @@ import javafx.scene.Node;
 public class SceneController extends Application {
   private static SceneController instancia;
   //private static DemoModel model;
-  @FXML
-  private TextField cpfClienteEntrada;
-  @FXML
-  private TextField nomeClienteEntrada;
-  @FXML
-  private PasswordField senhaClienteEntrada;
-  @FXML
-  private TextField usuarioClienteEntrada;
   private Stage stage;
   private Scene scene;
   private Parent root;
-  @FXML
-  private Button botaoCadastro;
-  @FXML
-  private Button botaoLogin;
-  @FXML
-  private Button botaoLoginCliente;
-  @FXML
-  private PasswordField entradaLoginSenha;
-  @FXML
-  private TextField entradaLoginUsuario;
-  @FXML
-  private Text nomeUsuario;
-
-  @FXML
-  private Text saldoUsuario; 
-
 
   public static SceneController getInstancia() {
     if (instancia == null ) {
@@ -59,7 +37,7 @@ public class SceneController extends Application {
     }
 
     return instancia;
-}
+  }
 
   public static void main(String [] args) throws Exception{
     launch(args);
@@ -75,6 +53,18 @@ public class SceneController extends Application {
     stage.show();
   }
 
+  @FXML
+  public void cenaCadastro(ActionEvent event) throws Exception {
+    root = FXMLLoader.load(getClass().getResource("layoutCadastroCliente.fxml"));
+    trocaCena(event);
+  }
+  
+  @FXML
+  public void cenaLogin(ActionEvent event) throws Exception {
+    root = FXMLLoader.load(getClass().getResource("layoutClienteLogin.fxml"));
+    trocaCena(event);
+  }
+
   public void cenaCadastroLogin(ActionEvent event) throws Exception{
     this.stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     this.stage.hide();
@@ -86,18 +76,6 @@ public class SceneController extends Application {
     stage.setTitle("betINF");
     stage.setScene(scene);
     stage.show();
-  }
- 
-  @FXML
-  public void cenaCadastro(ActionEvent event) throws Exception {
-    root = FXMLLoader.load(getClass().getResource("layoutCadastroCliente.fxml"));
-    trocaCena(event);
-  }
-  
-  @FXML
-  public void cenaLogin(ActionEvent event) throws Exception {
-    root = FXMLLoader.load(getClass().getResource("layoutClienteLogin.fxml"));
-    trocaCena(event);
   }
 
   public void trocaCena(ActionEvent event){
@@ -111,42 +89,31 @@ public class SceneController extends Application {
   }
 
   @FXML
+  private TextField cpfClienteEntrada;
+  @FXML
+  private TextField nomeClienteEntrada;
+  @FXML
+  private PasswordField senhaClienteEntrada;
+  @FXML
+  private TextField usuarioClienteEntrada;
+
+  @FXML
   public void criaUmCliente(ActionEvent event) throws Exception {
-    //System.out.println(this.stage);
-    /*
-    System.out.println("deveria estar sendo criado um cliente");
-    System.out.println( nomeClienteEntrada.getText() + "\n "
-      + cpfClienteEntrada.getText() + "\n "
-      + usuarioClienteEntrada.getText() + "\n "
-      + senhaClienteEntrada.getText());
-      */
       Cliente cliente = new Cliente(nomeClienteEntrada.getText(), 
       usuarioClienteEntrada.getText(), senhaClienteEntrada.getText(), cpfClienteEntrada.getText());
-      //System.out.println(nomeClienteEntrada.getText());
-      //System.out.println(usuarioClienteEntrada.getText());
-      //System.out.print(DemoModel.getInstancia().usuarioValido(usuarioClienteEntrada.getText()));
-
-      //System.out.print(stage);
       if(!DemoModel.getInstancia().usuarioValido(usuarioClienteEntrada.getText())){
-        //System.out.print(DemoModel.getInstancia().containsUsuario(usuarioClienteEntrada.getText()));
         Alert a = new Alert(AlertType.ERROR);
         a.setTitle("ERRO");
         a.setHeaderText("Já existe um usuário com esse login, cliente não criado!");
         a.showAndWait();
-        //cenaCadastro(event);
-        //stage.hide();
-        //System.out.print(this.stage);
         cenaCadastroLogin(event);
-        //start(stage);
       }
       else{
         DemoModel.getInstancia().addCliente(cliente);
-        //System.out.println(DemoModel.getInstancia().listaDeClientes());
         Alert a = new Alert(AlertType.CONFIRMATION);
         a.setTitle("Confirmação");
         a.setHeaderText("Usuário criado com êxito!");
         a.showAndWait();
-
         //troca cena menu principal
         root = FXMLLoader.load(getClass().getResource("MenuPrincipal.fxml"));
         trocaCena(event);
@@ -155,12 +122,18 @@ public class SceneController extends Application {
   }
 
   @FXML
+  private PasswordField entradaLoginSenha;
+  @FXML
+  private TextField entradaLoginUsuario;
+  @FXML
+  private static Text nomeUsuario;
+  @FXML
+  private static Text saldoUsuario;
+  private static Cliente clienteLogado; 
+  //private static Usuario usuarioLogado; 
+  
+  @FXML
   public void logarUsuario(ActionEvent event) throws Exception {
-    /* 
-    System.out.println("deveria estar sendo logado um cliente");
-    System.out.println( entradaLoginUsuario.getText() + "\n "
-    + entradaLoginSenha.getText());
-    */
     Usuario user = DemoModel.getInstancia().confirmaUsuario(entradaLoginUsuario.getText());
     if(user != null){
       //troca cena menu principal
@@ -169,16 +142,9 @@ public class SceneController extends Application {
         //se for cliente
         if(usuarioLogado.getClass().getName().equals("Cliente")) {
 					root = FXMLLoader.load(getClass().getResource("MenuPrincipal.fxml"));
-          Cliente clienteLogado = (Cliente)usuarioLogado;
-          //System.out.println(clienteLogado.toString());
-          //System.out.println(clienteLogado.getNomeUsuario());
-          //System.out.println(clienteLogado.getCarteira());
-          //System.out.println(nomeUsuario);
-          this.nomeUsuario = new Text(clienteLogado.getNomeUsuario()); 
-          System.out.println(nomeUsuario);
-          this.saldoUsuario = new Text(Double.toString(clienteLogado.getCarteira()));
-          System.out.println(saldoUsuario);
+          SceneController.clienteLogado = (Cliente)usuarioLogado;
           trocaCena(event);
+          updateMenu(SceneController.clienteLogado);
 				}
 				//se admin
 				else {
@@ -187,12 +153,12 @@ public class SceneController extends Application {
       
       }
       else{
-        /*senha errada 
+        /*senha errada */
         Alert a = new Alert(AlertType.WARNING);
         a.setTitle("ATENÇÃO");
         a.setHeaderText("Senha errada!");
         a.showAndWait();
-        */
+        
       }
     }
     else{
@@ -203,29 +169,138 @@ public class SceneController extends Application {
     }
 
   }
-  @FXML
-  void adicionarSaldo(ActionEvent event) {
 
+  //private Cliente clienteLogado;
+
+  private void updateMenu(Cliente clienteLogado) {
+    SceneController.nomeUsuario.setText(SceneController.clienteLogado.getNomeUsuario()+""); 
+    SceneController.saldoUsuario.setText("R$ "+SceneController.clienteLogado.getCarteira());
   }
 
   @FXML
-  void criarNovaAposta(ActionEvent event) {
-
+  void cenaAdicionarSaldo(ActionEvent event) throws Exception {
+    //nomeUsuario.setText(clienteLogado.getNomeUsuario()+""); 
+    //saldoUsuario.setText(""+clienteLogado.getCarteira());
+    root = FXMLLoader.load(getClass().getResource("AdicionarSaldo.fxml"));
+    trocaCena(event);
   }
 
   @FXML
-  void listarApostasDisponiveis(ActionEvent event) {
+  private TextField entradaSaldoAdd;
+  @FXML
+    void adicionarSaldo(ActionEvent event) throws Exception {
+      //System.out.println(clienteLogado.toString());
+      SceneController.clienteLogado.addCarteira(Double.parseDouble(this.entradaSaldoAdd.getText()));
+      //System.out.println(entradaSaldoAdd);
+      //System.out.println(Double.parseDouble(this.entradaSaldoAdd.getText()));
+      root = FXMLLoader.load(getClass().getResource("MenuPrincipal.fxml"));
+      trocaCena(event);
+    }
 
+  @FXML
+  void cenaCriarNovaAposta(ActionEvent event) throws Exception {    
+    root = FXMLLoader.load(getClass().getResource("CriarAposta.fxml"));
+    trocaCena(event);
   }
 
   @FXML
-  void retirarSaldo(ActionEvent event) {
+  private TextArea descricaoAposta;
 
+  @FXML
+  private TextField entradaTime1;
+
+  @FXML
+  private TextField entradaTime2;
+
+  @FXML
+  private TextField entradaValorDaAposta;
+
+  @FXML
+  void criarAposta(ActionEvent event) throws Exception {
+    String descricaoAposta = this.entradaTime1.getText() + " vs " + this.entradaTime2.getText() 
+    + "\n" + this.descricaoAposta.getParagraphs().toString();
+    double valorAposta = Double.parseDouble(this.entradaValorDaAposta.getText());
+    Aposta apostaSimples = new Aposta(descricaoAposta, valorAposta, SceneController.clienteLogado);
+    if(valorAposta <= SceneController.clienteLogado.getCarteira() && valorAposta > 0){
+      DemoModel.getInstancia().addAposta(apostaSimples);
+      Alert a = new Alert(AlertType.CONFIRMATION);
+      a.setTitle("CONFIRMAÇÃO");
+      a.setHeaderText("Aposta criada com sucesso!");
+      a.showAndWait();
+      root = FXMLLoader.load(getClass().getResource("MenuPrincipal.fxml"));
+      trocaCena(event);
+
+    }
+    else{
+      Alert a = new Alert(AlertType.CONFIRMATION);
+      a.setTitle("ATENÇÃO");
+      a.setHeaderText("Saldo insuficiente! Você sera redirecionado.");
+      a.showAndWait();
+      root = FXMLLoader.load(getClass().getResource("MenuPrincipal.fxml"));
+      trocaCena(event);
+    }
+
+  }
+  
+  @FXML
+  private static TextArea apostasCampo;
+
+  @FXML
+  private TextField entradaIdAposta;
+
+  @FXML
+  private Text nomeDoUsuario;
+
+  @FXML
+  void entrarApostaParticipante(ActionEvent event) {
+    SceneController.apostasCampo = new TextArea(DemoModel.getInstancia().listaDeApostasAbertas());
   }
 
   @FXML
-  void userLogout(ActionEvent event) {
+  void cenaListarApostasDisponiveis(ActionEvent event) throws Exception{
+    root = FXMLLoader.load(getClass().getResource("ListarApostasExistentesCliente.fxml"));
+    trocaCena(event);
+    SceneController.apostasCampo = new TextArea(DemoModel.getInstancia().listaDeApostasAbertas());
+    //SceneController.listaIdeAposta = new TableColumn<>(DemoModel.getInstancia().listaDeApostasAbertas());
+  }
 
+  @FXML
+  void cenaRetirarSaldo(ActionEvent event)throws Exception {
+    root = FXMLLoader.load(getClass().getResource("RetirarSaldo.fxml"));
+    trocaCena(event);
+  }
+
+  @FXML
+  private TextField entradaRetiradaSaldo;
+
+  @FXML
+  void retirarSaldoUsuario(ActionEvent event) throws Exception {
+    double valorRet = Double.parseDouble(this.entradaRetiradaSaldo.getText());
+		if(valorRet > SceneController.clienteLogado.getCarteira()) {
+			Alert a = new Alert(AlertType.ERROR);
+      a.setTitle("ERRO");
+      a.setHeaderText("Saldo insuficiente! Você será redirecionado.");
+      a.showAndWait();
+      root = FXMLLoader.load(getClass().getResource("MenuPrincipal.fxml"));
+      trocaCena(event);
+		}
+		else {
+			SceneController.clienteLogado.subCarteira(valorRet);
+      Alert a = new Alert(AlertType.CONFIRMATION);
+      a.setTitle("CONFIRMAÇÃO");
+      a.setHeaderText("Valor retirado com sucesso!");
+      a.showAndWait();
+      root = FXMLLoader.load(getClass().getResource("MenuPrincipal.fxml"));
+      trocaCena(event);
+		}
+
+  }
+
+
+  @FXML
+  void userLogout(ActionEvent event) throws Exception {
+    SceneController.clienteLogado = null;
+    cenaCadastroLogin(event);
   }
 
 }

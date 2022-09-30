@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SceneController">
    <children>
       <AnchorPane>
          <children>
@@ -22,9 +22,9 @@
                            <children>
                               <Pane layoutX="314.0" prefHeight="363.0" prefWidth="277.0">
                                  <children>
-                                    <ImageView fitHeight="132.0" fitWidth="119.0" layoutX="166.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="179.0" fitWidth="295.0" layoutY="92.0">
                                        <image>
-                                          <Image url="@../../../git/eclip/betINF/logobetINF.png" />
+                                          <Image url="@logobetINF.png" />
                                        </image>
                                     </ImageView>
                                  </children>
