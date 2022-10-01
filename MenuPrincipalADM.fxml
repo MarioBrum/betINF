@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SceneController">
    <children>
       <TitledPane animated="false" prefHeight="400.0" prefWidth="600.0" text="betINF">
          <content>
@@ -21,12 +21,12 @@
                <children>
                   <Pane layoutX="259.0" layoutY="1.0" prefHeight="363.0" prefWidth="336.0">
                      <children>
-                        <ImageView fitHeight="68.0" fitWidth="71.0" layoutX="266.0" pickOnBounds="true" preserveRatio="true">
+                        <Button layoutX="268.0" layoutY="324.0" mnemonicParsing="false" onAction="#userLogout" text="Logout" />
+                        <ImageView fitHeight="39.0" fitWidth="65.0" layoutX="271.0">
                            <image>
-                              <Image url="@../../../git/eclip/betINF/logobetINF.png" />
+                              <Image url="@logobetINF.png" />
                            </image>
                         </ImageView>
-                        <Button layoutX="268.0" layoutY="324.0" mnemonicParsing="false" onAction="#logoutADM" text="Logout" />
                      </children>
                   </Pane>
                   <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Olá," />
@@ -35,7 +35,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Text>
-                  <Button layoutX="35.0" layoutY="325.0" mnemonicParsing="false" onAction="#informarPlacar" text="Informar placar">
+                  <Button layoutX="35.0" layoutY="325.0" mnemonicParsing="false" onAction="#cenaInformarPlacar" text="Informar placar">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -92,7 +92,7 @@
                         </Tab>
                     </tabs>
                   </TabPane>
-                  <Button layoutX="156.0" layoutY="325.0" mnemonicParsing="false" onAction="#trocarSenha" text="Trocar senha">
+                  <Button layoutX="156.0" layoutY="325.0" mnemonicParsing="false" onAction="#cenaTrocarSenha" text="Trocar senha">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

@@ -130,6 +130,7 @@ public class SceneController extends Application {
   @FXML
   private static Text saldoUsuario;
   private static Cliente clienteLogado; 
+  private static Admin adminLogado; 
   //private static Usuario usuarioLogado; 
   
   @FXML
@@ -149,6 +150,11 @@ public class SceneController extends Application {
 				//se admin
 				else {
 					//
+          root = FXMLLoader.load(getClass().getResource("MenuPrincipalADM.fxml"));
+          SceneController.adminLogado = (Admin)usuarioLogado;
+          trocaCena(event);
+          //updateMenu(SceneController.adminLogado);
+
 				}
       
       }
@@ -300,8 +306,86 @@ public class SceneController extends Application {
   @FXML
   void userLogout(ActionEvent event) throws Exception {
     SceneController.clienteLogado = null;
+    SceneController.adminLogado = null;
     cenaCadastroLogin(event);
   }
 
+
+  //meu deus que bagunça nojenta
+  @FXML
+  private TableColumn<?, ?> listaApostasAbertas;
+
+  @FXML
+  private TableColumn<?, ?> listaApostasFechadas;
+
+  @FXML
+  private TableColumn<?, ?> listaCPF;
+
+  @FXML
+  private TableColumn<?, ?> listaCriadorAbertas;
+
+  @FXML
+  private TableColumn<?, ?> listaCriadorFechadas;
+
+  @FXML
+  private TableColumn<?, ?> listaIDsAbertas;
+
+  @FXML
+  private TableColumn<?, ?> listaIDsFechadas;
+
+  @FXML
+  private TableColumn<?, ?> listaNomes;
+
+  @FXML
+  private TableColumn<?, ?> listaParticipanteFechadas;
+
+  @FXML
+  private TableColumn<?, ?> listaUsuarios;
+
+  @FXML
+  private TableColumn<?, ?> listaValorAbertas;
+
+  @FXML
+  private TableColumn<?, ?> listaValorFechadas;
+
+  @FXML
+  void getClientList(ActionEvent event) {
+
+  }
+
+  @FXML
+  void getClosedBetsList(ActionEvent event) {
+
+  }
+
+  @FXML
+  void getOpenBetsList(ActionEvent event) {
+
+  }
+
+  @FXML
+  void cenaInformarPlacar(ActionEvent event) {
+
+  }
+
+  @FXML
+  void cenaTrocarSenha(ActionEvent event) throws Exception {
+    root = FXMLLoader.load(getClass().getResource("TrocarSenhaADM.fxml"));
+    trocaCena(event);
+  }
+
+
+  @FXML
+  private TextField entradaNovaSenha;
+  @FXML
+  void trocarSenhaAdm(ActionEvent event) throws Exception {
+    SceneController.adminLogado.setSenhaLogin(this.entradaNovaSenha.getText());
+    Alert a = new Alert(AlertType.CONFIRMATION);
+    a.setTitle("CONFIRMAÇÃO");
+    a.setHeaderText("Senha alterada com sucesso!");
+    a.showAndWait();
+    root = FXMLLoader.load(getClass().getResource("MenuPrincipalADM.fxml"));
+    trocaCena(event);
+  }
 }
 

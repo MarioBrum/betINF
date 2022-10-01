@@ -73,7 +73,7 @@ public class DemoModel {
         for(Cliente c:clientesCadastrados){
             //System.out.println(c.getNomeUsuario());
             //System.out.println(usuario);
-            if(c.getNomeUsuario().equals(usuario)){
+            if(c.getNomeUsuario().equalsIgnoreCase(usuario)){
                 //System.out.println(false);
                 
                 return false;
@@ -103,12 +103,12 @@ public class DemoModel {
     //verifica se existe usuario com tal login
     public Usuario confirmaUsuario(String usuarioNome){
         for(Cliente cliente : clientesCadastrados){
-            if(cliente.getNomeUsuario().equals(usuarioNome)){
+            if(cliente.getNomeUsuario().equalsIgnoreCase(usuarioNome)){
                 return cliente;
             }
         }
         for(Admin adm : administradoresCadastrados){
-            if(adm.getNomeUsuario().equals(usuarioNome)){
+            if(adm.getNomeUsuario().equalsIgnoreCase(usuarioNome)){
                 return adm;
             }
         }
@@ -118,7 +118,7 @@ public class DemoModel {
     public Usuario confirmaLogin(String usuarioLogin, String usuarioSenha) {
         Usuario usuario = confirmaUsuario(usuarioLogin);
         if(usuario != null){
-            if(usuario.getNomeUsuario().equals(usuarioLogin) && usuario.getSenhaUsuario().equals(usuarioSenha)){
+            if(usuario.getNomeUsuario().equalsIgnoreCase(usuarioLogin) && usuario.getSenhaUsuario().equals(usuarioSenha)){
                 return usuario;
             }
         }
