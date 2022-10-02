@@ -2,8 +2,14 @@
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javafx.application.Application;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -125,11 +131,14 @@ public class SceneController extends Application {
   private PasswordField entradaLoginSenha;
   @FXML
   private TextField entradaLoginUsuario;
+  //observer nomeUsuario saldoUsuario
   @FXML
-  private static Text nomeUsuario;
+  private Text nomeUsuario;
   @FXML
-  private static Text saldoUsuario;
-  private static Cliente clienteLogado; 
+  private Text saldoUsuario;
+  private static SimpleStringProperty nomeUsuarioObserver = new SimpleStringProperty();
+  private static SimpleDoubleProperty saldoUsuarioObserver = new SimpleDoubleProperty();
+  public static Cliente clienteLogado;
   private static Admin adminLogado; 
   //private static Usuario usuarioLogado; 
   
@@ -145,7 +154,8 @@ public class SceneController extends Application {
 					root = FXMLLoader.load(getClass().getResource("MenuPrincipal.fxml"));
           SceneController.clienteLogado = (Cliente)usuarioLogado;
           trocaCena(event);
-          updateMenu(SceneController.clienteLogado);
+          updateMenu();
+
 				}
 				//se admin
 				else {
@@ -178,9 +188,8 @@ public class SceneController extends Application {
 
   //private Cliente clienteLogado;
 
-  private void updateMenu(Cliente clienteLogado) {
-    SceneController.nomeUsuario.setText(SceneController.clienteLogado.getNomeUsuario()+""); 
-    SceneController.saldoUsuario.setText("R$ "+SceneController.clienteLogado.getCarteira());
+  private void updateMenu() {
+      
   }
 
   @FXML
@@ -189,6 +198,7 @@ public class SceneController extends Application {
     //saldoUsuario.setText(""+clienteLogado.getCarteira());
     root = FXMLLoader.load(getClass().getResource("AdicionarSaldo.fxml"));
     trocaCena(event);
+    System.out.println(nomeUsuario.getText());
   }
 
   @FXML
@@ -201,6 +211,7 @@ public class SceneController extends Application {
       //System.out.println(Double.parseDouble(this.entradaSaldoAdd.getText()));
       root = FXMLLoader.load(getClass().getResource("MenuPrincipal.fxml"));
       trocaCena(event);
+      
     }
 
   @FXML
@@ -233,8 +244,10 @@ public class SceneController extends Application {
       a.setTitle("CONFIRMAÇÃO");
       a.setHeaderText("Aposta criada com sucesso!");
       a.showAndWait();
+      clienteLogado.subCarteira(valorAposta);
       root = FXMLLoader.load(getClass().getResource("MenuPrincipal.fxml"));
       trocaCena(event);
+      
 
     }
     else{
@@ -256,6 +269,8 @@ public class SceneController extends Application {
 
   @FXML
   private Text nomeDoUsuario;
+
+  private boolean mostra = false;
 
   @FXML
   void entrarApostaParticipante(ActionEvent event) {
@@ -301,7 +316,20 @@ public class SceneController extends Application {
 		}
 
   }
-
+  
+  private static final DecimalFormat df = new DecimalFormat("0.00");
+  @FXML
+  void mostra(ActionEvent event) {
+    if(mostra){
+      nomeUsuario.setText("NOME DO USUARIO");
+      saldoUsuario.setText("R$: SALDO DO USUARIO ");
+    }
+    else{
+      nomeUsuario.setText(clienteLogado.getNomeUsuario());
+      saldoUsuario.setText("R$: "+df.format(clienteLogado.getCarteira()));
+    }
+    mostra = !mostra;
+  }
 
   @FXML
   void userLogout(ActionEvent event) throws Exception {
@@ -387,5 +415,6 @@ public class SceneController extends Application {
     root = FXMLLoader.load(getClass().getResource("MenuPrincipalADM.fxml"));
     trocaCena(event);
   }
+
 }
 

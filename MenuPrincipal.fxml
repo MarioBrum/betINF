@@ -17,7 +17,7 @@
                <children>
                   <Pane layoutX="259.0" layoutY="1.0" prefHeight="363.0" prefWidth="336.0">
                      <children>
-                        <Button layoutX="295.0" layoutY="337.0" mnemonicParsing="false" onAction="#userLogout" text="Logout" />
+                        <Button layoutX="235.0" layoutY="324.0" mnemonicParsing="false" onAction="#userLogout" text="Logout" />
                         <ImageView fitHeight="185.0" fitWidth="332.0" layoutX="2.0" layoutY="83.0">
                            <image>
                               <Image url="@logobetINF.png" />
@@ -57,6 +57,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Text>
+                  <Button layoutX="207.0" layoutY="30.0" mnemonicParsing="false" onAction="#mostra" text="Mostra" />
                </children>
             </AnchorPane>
          </content>
