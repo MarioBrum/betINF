@@ -3,6 +3,7 @@
 import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -198,7 +199,7 @@ public class SceneController extends Application {
     //saldoUsuario.setText(""+clienteLogado.getCarteira());
     root = FXMLLoader.load(getClass().getResource("AdicionarSaldo.fxml"));
     trocaCena(event);
-    System.out.println(nomeUsuario.getText());
+    //System.out.println(nomeUsuario.getText());
   }
 
   @FXML
@@ -262,7 +263,7 @@ public class SceneController extends Application {
   }
   
   @FXML
-  private static TextField apostasCampo;
+  private TextArea apostasCampo;
 
   @FXML
   private TextField entradaIdAposta;
@@ -273,8 +274,44 @@ public class SceneController extends Application {
   private boolean mostra = false;
 
   @FXML
-  void entrarApostaParticipante(ActionEvent event) {
-    //SceneController.apostasCampo = new TextArea(DemoModel.getInstancia().listaDeApostasAbertas());
+  void entrarApostaParticipante(ActionEvent event) throws Exception {
+    //aceitar aposta
+						//ver se a aposta nao possui o proprio cliente
+						//ver se o saldo eh valido
+						//aceitar a aposta simples e transforma-la em completa/fazendo exclusoes nas listas do model
+						
+						ArrayList<Aposta> listaDeApostasAbertas = DemoModel.getInstancia().getApostasAbertas();
+						int idApostaEscolhida = Integer.parseInt(entradaIdAposta.getText());
+						if(idApostaEscolhida > listaDeApostasAbertas.size()){
+							Alert a = new Alert(AlertType.ERROR);
+              a.setTitle("ERRO");
+              a.setHeaderText("ID da aposta não existe ou valor inserido está errado!");
+              a.showAndWait();
+						}
+						else{
+							Aposta apostaEscolhida = listaDeApostasAbertas.get(idApostaEscolhida);
+							if(clienteLogado.getNomeUsuario() == apostaEscolhida.getCliente1().getNomeUsuario()){
+                Alert a = new Alert(AlertType.ERROR);
+                a.setTitle("ERRO");
+                a.setHeaderText("Não é possível entrar na própria aposta!");
+                a.showAndWait();
+							}
+              if(clienteLogado.getCarteira() < apostaEscolhida.getValorDaAposta()){
+                Alert a = new Alert(AlertType.ERROR);
+                a.setTitle("ERRO");
+                a.setHeaderText("Saldo insuficiente para esta aposta!");
+                a.showAndWait();
+              }
+							//caso tudo ok
+							if((clienteLogado.getCarteira() >= apostaEscolhida.getValorDaAposta()) &&
+              clienteLogado.getNomeUsuario() != apostaEscolhida.getCliente1().getNomeUsuario()){
+								ApostaCompleta apostaCompletaADD = new ApostaCompleta(apostaEscolhida, clienteLogado);
+								clienteLogado.subCarteira(apostaEscolhida.getValorDaAposta());
+								DemoModel.getInstancia().removeAposta(apostaEscolhida);
+								DemoModel.getInstancia().addAposta(apostaCompletaADD);
+                voltarMenuPrincipal(event);
+							}
+						}
   }
 
   
@@ -283,8 +320,9 @@ public class SceneController extends Application {
     mostra(event);
     //mostrar apostas
     //System.out.println(apostasCampo);
-    SceneController.apostasCampo = new TextField(DemoModel.getInstancia().listaDeApostasAbertas());
-    System.out.println(apostasCampo.getText());
+    apostasCampo.textProperty().setValue(DemoModel.getInstancia().listaDeApostasAbertas());
+    //System.out.println(apostasCampo.getText());
+
     //apostasCampo.setText(DemoModel.getInstancia().listaDeApostasAbertas());
   }
 
@@ -350,6 +388,30 @@ public class SceneController extends Application {
   }
 
   @FXML
+  private TextArea admCampo;
+
+  @FXML
+  void cenaInformarPlacar(ActionEvent event) throws Exception {
+    root = FXMLLoader.load(getClass().getResource("MenuInformaResult.fxml"));
+    trocaCena(event);
+  }
+
+  @FXML
+  void mostraApostasAbertas(ActionEvent event) {
+    admCampo.textProperty().setValue(DemoModel.getInstancia().listaDeApostasAbertas());
+  }
+
+  @FXML
+  void mostraApostasFechadas(ActionEvent event) {
+    admCampo.textProperty().setValue(DemoModel.getInstancia().listaDeApostasFechadas());
+  }
+
+  @FXML
+  void mostraClientes(ActionEvent event) {
+    admCampo.textProperty().setValue(DemoModel.getInstancia().listaDeClientes());
+  }
+
+  @FXML
   void userLogout(ActionEvent event) throws Exception {
     SceneController.clienteLogado = null;
     SceneController.adminLogado = null;
@@ -364,7 +426,7 @@ public class SceneController extends Application {
 
 
   @FXML
-  private TextField entradaNovaSenha;
+  private PasswordField entradaNovaSenha;
   @FXML
   void trocarSenhaAdm(ActionEvent event) throws Exception {
     SceneController.adminLogado.setSenhaLogin(this.entradaNovaSenha.getText());
@@ -374,6 +436,61 @@ public class SceneController extends Application {
     a.showAndWait();
     root = FXMLLoader.load(getClass().getResource("MenuPrincipalADM.fxml"));
     trocaCena(event);
+  }
+
+  @FXML
+  void criadorGanhou(ActionEvent event) throws IOException {
+    ArrayList<ApostaCompleta> ac = DemoModel.getInstancia().getApostasFechadas();
+    ApostaCompleta apostaEscolhida = ac.get(Integer.parseInt(entradaIdAposta.getText()));
+    apostaEscolhida.getCliente1().addCarteira(apostaEscolhida.getValorDaAposta());
+    DemoModel.getInstancia().removeAposta(apostaEscolhida);
+    Alert a = new Alert(AlertType.CONFIRMATION);
+    a.setTitle("CONFIRMAÇÃO");
+    a.setHeaderText("Criador a aposta ganhou, aposta finalizada!"
+    +"/n Você será redirecionado.");
+    root = FXMLLoader.load(getClass().getResource("MenuPrincipalADM.fxml"));
+    trocaCena(event);
+  }
+
+  @FXML
+  void participanteGanhou(ActionEvent event) throws IOException {
+    ArrayList<ApostaCompleta> ac = DemoModel.getInstancia().getApostasFechadas();
+    ApostaCompleta apostaEscolhida = ac.get(Integer.parseInt(entradaIdAposta.getText()));
+    apostaEscolhida.getCliente2().addCarteira(apostaEscolhida.getValorDaAposta());
+    DemoModel.getInstancia().removeAposta(apostaEscolhida);
+    Alert a = new Alert(AlertType.CONFIRMATION);
+    a.setTitle("CONFIRMAÇÃO");
+    a.setHeaderText("Participante da aposta ganhou, aposta finalizada!"
+    +"/n Você será redirecionado.");
+    root = FXMLLoader.load(getClass().getResource("MenuPrincipalADM.fxml"));
+    trocaCena(event);
+  }
+
+  @FXML
+    void invalidoGanhou(ActionEvent event) {
+      ArrayList<ApostaCompleta> ac = DemoModel.getInstancia().getApostasFechadas();
+      ApostaCompleta apostaEscolhida = ac.get(Integer.parseInt(entradaIdAposta.getText()));
+      apostaEscolhida.getCliente1().addCarteira(apostaEscolhida.getValorDaAposta());
+      apostaEscolhida.getCliente2().addCarteira(apostaEscolhida.getValorDaAposta());
+      DemoModel.getInstancia().removeAposta(apostaEscolhida);
+      Alert a = new Alert(AlertType.WARNING);
+      a.setTitle("ATENÇÃO");
+      a.setHeaderText("A aposta não teve vencedores! O dinheiro foi reembolsado."
+      +"/n Você será redirecionado.");
+    }
+
+  @FXML
+  void selecionarAposta(ActionEvent event) {
+    ArrayList<ApostaCompleta> ac = DemoModel.getInstancia().getApostasFechadas();
+    if(Integer.parseInt(entradaIdAposta.getText()) >= ac.size() || Integer.parseInt(entradaIdAposta.getText()) < 0 ){
+      Alert a = new Alert(AlertType.WARNING);
+      a.setTitle("ATENÇÃO");
+      a.setHeaderText("ID da aposta inexistente!");
+      a.showAndWait();
+    }
+    else{
+      descricaoAposta.textProperty().setValue(ac.get(Integer.parseInt(entradaIdAposta.getText())).toString());
+    }
   }
 
 }

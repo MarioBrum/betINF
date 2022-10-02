@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -19,10 +16,10 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Pane layoutX="259.0" layoutY="1.0" prefHeight="363.0" prefWidth="336.0">
+                  <Pane layoutX="211.0" layoutY="1.0" prefHeight="363.0" prefWidth="384.0">
                      <children>
                         <Button layoutX="268.0" layoutY="324.0" mnemonicParsing="false" onAction="#userLogout" text="Logout" />
-                        <ImageView fitHeight="39.0" fitWidth="65.0" layoutX="271.0">
+                        <ImageView fitHeight="70.0" fitWidth="116.0" layoutX="237.0" layoutY="14.0">
                            <image>
                               <Image url="@logobetINF.png" />
                            </image>
@@ -30,7 +27,7 @@
                      </children>
                   </Pane>
                   <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Olá," />
-                  <Text fill="RED" layoutX="35.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOME DO ADMINISTRADOR">
+                  <Text fill="RED" layoutX="35.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADMIN">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -40,63 +37,15 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <TabPane layoutX="12.0" layoutY="34.0" prefHeight="282.0" prefWidth="513.0" tabClosingPolicy="UNAVAILABLE">
-                    <tabs>
-                      <Tab onSelectionChanged="#getOpenBetsList" text="Apostas Abertas">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="194.0" prefWidth="373.0">
-                                 <children>
-                                    <TableView prefHeight="255.0" prefWidth="514.0">
-                                      <columns>
-                                          <TableColumn fx:id="listaIDsAbertas" prefWidth="34.0" text="ID" />
-                                        <TableColumn fx:id="listaApostasAbertas" prefWidth="290.0" text="Apostas" />
-                                        <TableColumn fx:id="listaValorAbertas" prefWidth="60.0" text="Valor" />
-                                          <TableColumn fx:id="listaCriadorAbertas" prefWidth="129.0" text="Criador" />
-                                      </columns>
-                                    </TableView>
-                                 </children>
-                              </AnchorPane>
-                        </content>
-                      </Tab>
-                      <Tab onSelectionChanged="#getClosedBetsList" text="Apostas Fechadas">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <TableView prefHeight="255.0" prefWidth="513.0">
-                                       <columns>
-                                          <TableColumn fx:id="listaIDsFechadas" prefWidth="24.0" text="ID" />
-                                          <TableColumn fx:id="listaApostasFechadas" prefWidth="236.0" text="Aposta" />
-                                          <TableColumn fx:id="listaValorFechadas" prefWidth="79.0" text="Valor" />
-                                          <TableColumn fx:id="listaCriadorFechadas" prefWidth="74.0" text="Criador" />
-                                          <TableColumn fx:id="listaParticipanteFechadas" prefWidth="98.0" text="Participante" />
-                                       </columns>
-                                    </TableView>
-                                 </children>
-                              </AnchorPane>
-                        </content>
-                      </Tab>
-                        <Tab onSelectionChanged="#getClientList" text="Lista de Clientes">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <TableView prefHeight="255.0" prefWidth="513.0">
-                                       <columns>
-                                          <TableColumn fx:id="listaNomes" prefWidth="277.0" text="Nome" />
-                                          <TableColumn fx:id="listaUsuarios" prefWidth="148.0" text="Usuario" />
-                                          <TableColumn fx:id="listaCPF" prefWidth="87.0" text="CPF" />
-                                       </columns>
-                                    </TableView>
-                                 </children>
-                              </AnchorPane>
-                          </content>
-                        </Tab>
-                    </tabs>
-                  </TabPane>
                   <Button layoutX="156.0" layoutY="325.0" mnemonicParsing="false" onAction="#cenaTrocarSenha" text="Trocar senha">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
+                  <TextArea fx:id="admCampo" layoutX="28.0" layoutY="80.0" prefHeight="234.0" prefWidth="399.0" />
+                  <Button layoutX="30.0" layoutY="43.0" mnemonicParsing="false" onAction="#mostraApostasAbertas" text="Apostas Abertas" />
+                  <Button layoutX="145.0" layoutY="43.0" mnemonicParsing="false" onAction="#mostraApostasFechadas" text="Apostas Fechadas" />
+                  <Button layoutX="269.0" layoutY="43.0" mnemonicParsing="false" onAction="#mostraClientes" text="Clientes Cadastrados" />
                </children>
             </AnchorPane>
          </content>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -25,8 +25,8 @@
                      </children>
                   </Pane>
                   <Text layoutX="54.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nova senha:" />
-                  <TextField fx:id="entradaNovaSenha" layoutX="54.0" layoutY="127.0" promptText="Nova senha" />
                   <Button layoutX="75.0" layoutY="187.0" mnemonicParsing="false" onAction="#trocarSenhaAdm" text="Alterar Senha" />
+                  <PasswordField fx:id="entradaNovaSenha" layoutX="54.0" layoutY="136.0" />
                </children>
             </AnchorPane>
          </content>

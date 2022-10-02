@@ -34,11 +34,10 @@ public class Cliente extends Usuario{
     }
     
     public String toString() {
-    	return "-----------------------------------------------------------------\n"
-    			+ "Nome do cliente: " + this.getNome() + "\n"
+    	return 
+    			"\nNome do cliente: " + this.getNome() + "\n"
     			+ "Nome de usuario: " + this.getNomeUsuario() + "\n"
     			+ "CPF: " + this.cpf + "\n"
-    			+ "Saldo: " + this.getCarteira() + "\n"
-    			+ "-----------------------------------------------------------------";
+    			+ "Saldo: " + this.getCarteira() + "\n";
     }
 }

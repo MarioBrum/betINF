@@ -22,7 +22,8 @@ public class DemoModel {
     	clientesCadastrados.add(new Cliente ("Mario","mario1","senha1","10101010101"));
         clientesCadastrados.add(new Cliente ("Marcelo","marcelo1","senha1","10101010102"));
         clientesCadastrados.add(new Cliente ("Adilson","adilson1","senha1","10101010103"));
-        apostasAbertas.add(new Aposta("Brasil vs Servia[2 a 0 Brasil]", 5, clientesCadastrados.get(2)));
+        apostasAbertas.add(new Aposta("Brasil vs Servia \n[2 a 0 Brasil]", 5, clientesCadastrados.get(2)));
+        apostasConfirmadas.add(new ApostaCompleta("Japao vs Argentina \n[Minimo 3 gols]", 5, clientesCadastrados.get(2),clientesCadastrados.get(0)));
     }
 
     //padrao singleton
@@ -153,8 +154,8 @@ public class DemoModel {
     	String retorno = "";
         int contador = 0;
     	for(Cliente a : clientesCadastrados ){
-            retorno += "\n" + contador++ + "\n";
-    		retorno += a.toString();
+            retorno += "\n ID: "+ contador++ + " ";
+    		retorno += a.toString() + " \n";
     	}
     	return retorno;
     }
@@ -167,8 +168,8 @@ public class DemoModel {
         String retorno = "";
         int contador = 0;
     	for(Aposta a : apostasConfirmadas ){
-            retorno += "\n "+ contador++ + "\n";
-    		retorno += a.toString();
+            retorno += "\n ID: "+ contador++ + " ";
+    		retorno += a.toString() + " \n";
     	}
     	return retorno;
     }

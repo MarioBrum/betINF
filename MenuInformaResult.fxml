@@ -34,6 +34,7 @@
                         <Button layoutX="125.0" layoutY="238.0" mnemonicParsing="false" onAction="#participanteGanhou" text="Participante ganhou" />
                         <Button layoutX="14.0" layoutY="238.0" mnemonicParsing="false" onAction="#criadorGanhou" text="Criador ganhou" />
                         <TextArea fx:id="descricaoAposta" layoutX="13.0" layoutY="95.0" prefHeight="136.0" prefWidth="310.0" promptText="Descrição Aposta" />
+                        <Button layoutX="256.0" layoutY="238.0" mnemonicParsing="false" onAction="#invalidoGanhou" text="Invalido" />
                      </children>
                   </AnchorPane>
                </content>
