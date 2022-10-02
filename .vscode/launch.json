@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "betINF_375d009c"
+        },
+        {
+            "type": "java",
             "name": "Launch SceneController",
             "request": "launch",
             "vmArgs": "--module-path D:/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/lib --add-modules javafx.controls,javafx.fxml",

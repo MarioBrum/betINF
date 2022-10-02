@@ -47,7 +47,7 @@ public class SceneController extends Application {
   }
 
   public static void main(String [] args) throws Exception{
-    launch(args);
+    launch();
   }
 
   @Override
@@ -121,6 +121,7 @@ public class SceneController extends Application {
         a.setTitle("Confirmação");
         a.setHeaderText("Usuário criado com êxito!");
         a.showAndWait();
+        clienteLogado = cliente;
         //troca cena menu principal
         root = FXMLLoader.load(getClass().getResource("MenuPrincipal.fxml"));
         trocaCena(event);
