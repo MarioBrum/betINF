@@ -262,7 +262,7 @@ public class SceneController extends Application {
   }
   
   @FXML
-  private static TextArea apostasCampo;
+  private static TextField apostasCampo;
 
   @FXML
   private TextField entradaIdAposta;
@@ -274,14 +274,31 @@ public class SceneController extends Application {
 
   @FXML
   void entrarApostaParticipante(ActionEvent event) {
-    SceneController.apostasCampo = new TextArea(DemoModel.getInstancia().listaDeApostasAbertas());
+    //SceneController.apostasCampo = new TextArea(DemoModel.getInstancia().listaDeApostasAbertas());
+  }
+
+  
+  @FXML
+  void mostrarApostas(ActionEvent event) {
+    mostra(event);
+    //mostrar apostas
+    //System.out.println(apostasCampo);
+    SceneController.apostasCampo = new TextField(DemoModel.getInstancia().listaDeApostasAbertas());
+    System.out.println(apostasCampo.getText());
+    //apostasCampo.setText(DemoModel.getInstancia().listaDeApostasAbertas());
+  }
+
+  @FXML
+  void voltarMenuPrincipal(ActionEvent event) throws Exception {
+    root = FXMLLoader.load(getClass().getResource("MenuPrincipal.fxml"));
+    trocaCena(event);
   }
 
   @FXML
   void cenaListarApostasDisponiveis(ActionEvent event) throws Exception{
     root = FXMLLoader.load(getClass().getResource("ListarApostasExistentesCliente.fxml"));
     trocaCena(event);
-    SceneController.apostasCampo = new TextArea(DemoModel.getInstancia().listaDeApostasAbertas());
+    //SceneController.apostasCampo = new TextArea(DemoModel.getInstancia().listaDeApostasAbertas());
     //SceneController.listaIdeAposta = new TableColumn<>(DemoModel.getInstancia().listaDeApostasAbertas());
   }
 
@@ -321,14 +338,15 @@ public class SceneController extends Application {
   @FXML
   void mostra(ActionEvent event) {
     if(mostra){
-      nomeUsuario.setText("NOME DO USUARIO");
-      saldoUsuario.setText("R$: SALDO DO USUARIO ");
+      nomeUsuario.setText("");
+      saldoUsuario.setText("R$: ");
     }
     else{
       nomeUsuario.setText(clienteLogado.getNomeUsuario());
       saldoUsuario.setText("R$: "+df.format(clienteLogado.getCarteira()));
     }
     mostra = !mostra;
+
   }
 
   @FXML
@@ -336,64 +354,6 @@ public class SceneController extends Application {
     SceneController.clienteLogado = null;
     SceneController.adminLogado = null;
     cenaCadastroLogin(event);
-  }
-
-
-  //meu deus que bagunça nojenta
-  @FXML
-  private TableColumn<?, ?> listaApostasAbertas;
-
-  @FXML
-  private TableColumn<?, ?> listaApostasFechadas;
-
-  @FXML
-  private TableColumn<?, ?> listaCPF;
-
-  @FXML
-  private TableColumn<?, ?> listaCriadorAbertas;
-
-  @FXML
-  private TableColumn<?, ?> listaCriadorFechadas;
-
-  @FXML
-  private TableColumn<?, ?> listaIDsAbertas;
-
-  @FXML
-  private TableColumn<?, ?> listaIDsFechadas;
-
-  @FXML
-  private TableColumn<?, ?> listaNomes;
-
-  @FXML
-  private TableColumn<?, ?> listaParticipanteFechadas;
-
-  @FXML
-  private TableColumn<?, ?> listaUsuarios;
-
-  @FXML
-  private TableColumn<?, ?> listaValorAbertas;
-
-  @FXML
-  private TableColumn<?, ?> listaValorFechadas;
-
-  @FXML
-  void getClientList(ActionEvent event) {
-
-  }
-
-  @FXML
-  void getClosedBetsList(ActionEvent event) {
-
-  }
-
-  @FXML
-  void getOpenBetsList(ActionEvent event) {
-
-  }
-
-  @FXML
-  void cenaInformarPlacar(ActionEvent event) {
-
   }
 
   @FXML

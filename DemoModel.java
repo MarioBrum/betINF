@@ -22,7 +22,7 @@ public class DemoModel {
     	clientesCadastrados.add(new Cliente ("Mario","mario1","senha1","10101010101"));
         clientesCadastrados.add(new Cliente ("Marcelo","marcelo1","senha1","10101010102"));
         clientesCadastrados.add(new Cliente ("Adilson","adilson1","senha1","10101010103"));
-        apostasAbertas.add(new Aposta("Brasil 2 x 0 Servia", 5, clientesCadastrados.get(2)));
+        apostasAbertas.add(new Aposta("Brasil vs Servia[2 a 0 Brasil]", 5, clientesCadastrados.get(2)));
     }
 
     //padrao singleton
@@ -143,8 +143,8 @@ public class DemoModel {
     	String retorno = "";
         int contador = 0;
     	for(Aposta a : apostasAbertas ){
-            retorno += "\n "+ contador++ + "\n";
-    		retorno += a.toString();
+            retorno += "\n ID: "+ contador++ + " ";
+    		retorno += a.toString() + " \n";
     	}
     	return retorno;
     }

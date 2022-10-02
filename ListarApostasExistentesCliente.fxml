@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
@@ -21,21 +20,22 @@
                      <children>
                         <Pane layoutX="259.0" layoutY="1.0" prefHeight="363.0" prefWidth="336.0">
                            <children>
-                              <ImageView fitHeight="166.0" fitWidth="231.0" layoutX="91.0" layoutY="99.0">
+                              <ImageView fitHeight="170.0" fitWidth="285.0" layoutX="63.0" layoutY="76.0">
                                  <image>
-                                    <Image url="@../Documents/GitHub/betINF/logobetINF.png" />
+                                    <Image url="@logobetINF.png" />
                                  </image>
                               </ImageView>
+                              <Button layoutX="24.0" layoutY="310.0" mnemonicParsing="false" onAction="#voltarMenuPrincipal" text="Voltar" />
                            </children>
                         </Pane>
                         <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Olá," />
-                        <Text fx:id="nomeDoUsuario" fill="RED" layoutX="35.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="279.0">
+                        <Text fx:id="nomeUsuario" fill="RED" layoutX="35.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="279.0">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Text>
                         <Text layoutX="13.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Saldo:" />
-                        <Text layoutX="45.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.0">
+                        <Text fx:id="saldoUsuario" layoutX="45.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="169.0">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -46,7 +46,8 @@
                            </font>
                         </Button>
                         <TextField fx:id="entradaIdAposta" layoutX="27.0" layoutY="310.0" prefHeight="25.0" prefWidth="124.0" promptText="ID" />
-                        <TextArea fx:id="apostasCampo" layoutX="27.0" layoutY="62.0" prefHeight="223.0" prefWidth="296.0" />
+                        <Button layoutX="223.0" layoutY="22.0" mnemonicParsing="false" onAction="#mostrarApostas" text="Mostrar" />
+                        <TextField fx:id="apostasCampo" layoutX="27.0" layoutY="60.0" prefHeight="236.0" prefWidth="274.0" />
                      </children>
                   </AnchorPane>
                </content>

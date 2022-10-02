@@ -18,7 +18,7 @@
                <children>
                   <TitledPane animated="false" prefHeight="400.0" prefWidth="600.0" text="betINF">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" onDragDetected="#voltarMenuPrincipal" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <Pane layoutX="314.0" prefHeight="363.0" prefWidth="277.0">
                                  <children>
@@ -40,6 +40,7 @@
                               <TextField fx:id="entradaValorDaAposta" layoutX="11.0" layoutY="193.0" promptText="Valor da aposta" />
                               <TextArea fx:id="descricaoAposta" layoutX="11.0" layoutY="78.0" prefHeight="95.0" prefWidth="298.0" />
                               <Text layoutX="11.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição da Aposta" />
+                              <Button layoutX="100.0" layoutY="224.0" mnemonicParsing="false" onAction="#voltarMenuPrincipal" text="Voltar" />
                            </children>
                         </AnchorPane>
                      </content>
